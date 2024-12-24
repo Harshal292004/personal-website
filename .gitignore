@@ -23,14 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-public
 eslint.*
-*.png
-*.html
+
 *.md
 package-lock.json 
-postcss.*
-tailwind.*
-vite.*
-index.css
-constants
