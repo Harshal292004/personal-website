@@ -83,8 +83,8 @@ const Projects = () => {
                     <directionalLight position={[10,10,5]}></directionalLight>
                     <Center>
                         <Suspense fallback={<CanvasLoader></CanvasLoader>} >
-                        <group scale={2} position={[0,-3,0]} rotation={[0,-0.1,0]}>
-                            <AsusLap/>
+                        <group scale={2} position={[0,-1,-6]} rotation={[0,-0.1,0]}>
+                            <AsusLap texture={currentProject.texture}/>
                         </group>
                         </Suspense>    
                     </Center>

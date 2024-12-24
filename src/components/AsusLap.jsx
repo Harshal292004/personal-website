@@ -1,28 +1,65 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations, useVideoTexture, VideoTexture } from '@react-three/drei'
-
+import { useState } from 'react'
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 export function AsusLap(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/asus_rog_flow_x16.glb')
-  const { actions } = useAnimations(animations, group)
-  const txt=useVideoTexture('/textures/project/project1.mp4',{
-    autoplay:false,
-    muted:true,
-    loop:true
-  })
-  const [isOpen,setIsOpen]= useState(false)
-  const handleClick=()=>{
-    if(!isOpen){
-        actions['LaptopOpen']?.play();
-        txt.video.play()
-    }else{
-        actions['LaptopOpen']?.stop()
-        txt.video.pause()
+  const group = useRef();
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [laptopOpen, setLaptopOpen] = useState(false);
+  const videoRef = useRef(null);
+
+  // Load the GLTF model
+  const { nodes, materials, animations } = useGLTF('/models/asus_rog_flow_x16/scene.gltf');
+  const { actions } = useAnimations(animations, group);
+
+  // Load the video texture
+  const videoTexture = useVideoTexture(props.texture?props.texture:'/textures/project/project1.mp4', {
+    loop: true,
+    muted: true,
+    autoplay: true,
+  });
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (videoPlaying) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
     }
-    setIsOpen(!isOpen)
-  }
+  }, [videoPlaying]);
+
+  const handleLaptopClick = () => {
+    setLaptopOpen(!laptopOpen);
+    if (laptopOpen) {
+      actions['Animation']?.stop();
+    } else {
+      actions['Animation']?.play();
+    }
+    setVideoPlaying(!videoPlaying);
+  };
+
+  useGSAP(
+    ()=>{
+      gsap.from(group.current.rotation,{
+        y:Math.PI/2,
+        duration:1,
+        ease:'power3.out'
+
+      })
+    },[txt]
+  )
+
+  useEffect(
+    ()=>{
+      if(videoTexture){
+        videoTexture.flipY=false
+      }
+    },[videoTexture]
+  )
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} onClick={handleLaptopClick} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="root">
@@ -198,7 +235,9 @@ export function AsusLap(props) {
                   <skinnedMesh
                     name="Object_36"
                     geometry={nodes.Object_36.geometry}
-                    material={materials.display_q}
+                    material={
+                      <meshBasicMaterial map={videoTexture} />
+                    }
                     skeleton={nodes.Object_36.skeleton}
                   />
                   <skinnedMesh
@@ -250,4 +289,6 @@ export function AsusLap(props) {
   )
 }
 
-useGLTF.preload('/model/asus_rog_flow_x16.glb')
+useGLTF.preload('/models/asus_rog_flow_x16/scene.gltf')
+
+
