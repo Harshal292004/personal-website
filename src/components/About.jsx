@@ -24,7 +24,7 @@ const About = () => {
                     <img src="/assets/grid1.png" alt="grid-1" className='w-full sm:h-[276px] h-fit object-contain' />
                     <div>
                         <p className='grid-headtext'>Hi, I'm Harshal</p>
-                        <p className='grid-subtext'>I am actually no one and i am pretty use less</p>
+                        <p className='grid-subtext'>I am actually pretty good at this.</p>
                     </div>
                 </div>    
             </div>
