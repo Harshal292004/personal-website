@@ -232,7 +232,7 @@ const Hero= ({ id }:{id:string}) => {
                   "h-12 text-base sm:h-14 sm:text-lg md:text-xl lg:h-16 lg:text-2xl mt-4 md:mt-6",
                   "border-4 border-black dark:border-white bg-orange-400 dark:bg-yellow-500 hover:bg-orange-500 dark:hover:bg-yellow-600 text-orange-950 dark:text-zinc-900 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all"
                 )}
-                onClick={() => {scrollToSection({element_id:"#contact"})}}
+                onClick={() => {scrollToSection({element_id:"contact"})}}
               >
                 GET IN TOUCH
               </Button>

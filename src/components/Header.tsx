@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Mail, ExternalLink } from "lucide-react";
+import { Sun, Moon, Mail } from "lucide-react";
 import Image from "next/image";
 import { LOGO_VARIANTS, NAVBAR_VARIANTS } from "@/lib/variants";
 
@@ -14,16 +14,25 @@ import useScrollHideNav from "@/lib/hooks/useScrollHideNav";
 import useClickOutside from "@/lib/hooks/useClickOutside";
 
 import { useTheme } from "next-themes";
-import { LINKS } from "@/lib/constants";
-
-// Smooth scroll to section
+import NavLinks from "./ui/Header/NavLinks";
+import MobileNavLinks from "./ui/Header/MobileNavLinks";
 import scrollToSection from "@/lib/scrollSection";
 
 const Header = ({ id }: { id: string }) => {
   const { theme, setTheme } = useTheme();
-  const [isOpen, setIsOpen] = useState<Boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  useClickOutside(menuRef, () => setIsOpen(false));
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  
+  // Modified useClickOutside implementation
+  useClickOutside(menuRef, (e) => {
+    // Only close if the click is not on the button
+    if (buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
+      console.log("Clicked outside");
+      setIsOpen(false);
+    }
+  });
+  
   const showNav = useScrollHideNav();
 
   // Toggle dark mode
@@ -31,7 +40,11 @@ const Header = ({ id }: { id: string }) => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-
+  // Toggle menu function
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -138,11 +151,12 @@ const Header = ({ id }: { id: string }) => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <motion.button
+              ref={buttonRef}
               className={twMerge(
                 `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000]`,
                 "dark:bg-yellow-400 dark:text-black bg-emerald-400"
               )}
-              onClick={() => setIsOpen(prev=>!prev)}
+              onClick={toggleMenu}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -180,7 +194,7 @@ const Header = ({ id }: { id: string }) => {
                 " dark:bg-gray-800 dark:text-gray-50 bg-emerald-400"
               )}
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-4 max-h-[70vh] overflow-y-auto">
                 <MobileNavLinks theme={theme} setIsOpen={setIsOpen} />
 
                 <div className="flex items-center gap-4 mt-4">
@@ -223,102 +237,5 @@ const Header = ({ id }: { id: string }) => {
     </>
   );
 };
-
-function NavLinks() {
-  return (
-    <>
-      {LINKS.map((link) => (
-        <motion.a
-          key={link.href}
-          href={link.href}
-          target={!link.href.startsWith("#") ? "_blank" : undefined}
-          rel={!link.href.startsWith("#") ? "noopener noreferrer" : undefined}
-          className={twMerge(
-            "px-3 py-1 font-bold text-black hover:-translate-y-1 transform transition-all duration-200",
-            "border-b-2 border-transparent hover:border-black relative group dark:text-yellow-400"
-          )}
-          whileHover={{
-            scale: 1.05,
-            rotate: 2,
-            transition: { duration: 0.2 },
-          }}
-          onClick={(e) => {
-            if (link.href.startsWith("#")) {
-              e.preventDefault();
-              scrollToSection({ element_id: link.href.substring(1) });
-            }
-          }}
-        >
-          <span className="flex items-center gap-1">
-            {link.label}
-            {!link.href.startsWith("#") && (
-              <motion.span
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ExternalLink size={16} />
-              </motion.span>
-            )}
-          </span>
-          <motion.span
-            className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-gray-300"
-            initial={{ width: "0%" }}
-            whileHover={{ width: "100%" }}
-            transition={{ duration: 0.2 }}
-          />
-        </motion.a>
-      ))}
-    </>
-  );
-}
-function MobileNavLinks({
-  theme,
-  setIsOpen,
-}: {
-  theme: string | undefined;
-  setIsOpen: React.Dispatch<React.SetStateAction<Boolean>>;
-}) {
-  return (
-    <>
-      {LINKS.map((link, index) => (
-        <motion.a
-          key={link.href}
-          href={link.href}
-          target={link.href.startsWith("http") ? "_blank" : "_self"}
-          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className={twMerge(
-            "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",
-            "transform transition-all duration-200 border-b-2 border-black",
-            theme === "dark" &&
-              "dark:text-yellow-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          )}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            transition: {
-              delay: index * 0.1,
-              duration: 0.3,
-            },
-          }}
-          whileHover={{ scale: 1.02, x: 5 }}
-          onClick={(e) => {
-            if (link.href.startsWith("#")) {
-              e.preventDefault();
-              scrollToSection({ element_id: link.href.substring(1) });
-              setIsOpen(false);
-            }
-          }}
-        >
-          <span className="flex items-center justify-between">
-            {link.label}
-            {link.label === "Blogs" && <ExternalLink size={16} />}
-          </span>
-        </motion.a>
-      ))}
-    </>
-  );
-}
 
 export { Header };

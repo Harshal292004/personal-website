@@ -1,6 +1,13 @@
 import { ELinkState, EState } from "./types";
 import type { ITextProps } from "./types";
-import { pixelify_sans, silkscreen,space_mono,fira_code,space_grotesk,jetbrains_mono } from "./fonts";
+import {
+  pixelify_sans,
+  silkscreen,
+  space_mono,
+  fira_code,
+  space_grotesk,
+  jetbrains_mono,
+} from "./fonts";
 
 // languages import
 import python from "@/lib/techstack/languages/python.svg";
@@ -27,9 +34,16 @@ const LINKS = [
   { href: "#home", label: "Home" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "/software-memes", label: "SW Memes" },
-  { href: "/software-reads", label: "SW Reads" },
-  { href: "/blogs", label: "Blogs" }, // Make sure this is a full URL if external
+  { href: "/software-memes", label: "My S/W Memes" },
+  { href: "/software-reads", label: "My S/W Reads" },
+  { href: "/blogs", label: "Blogs" },
+];
+
+const QUICK_LINKS = [
+  { href: "#home", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "/software-memes", label: "My S/W Memes" },
+  { href: "/software-reads", label: "My S/W Reads" },
 ];
 
 const FUN_FACTS = [
@@ -74,67 +88,62 @@ const RANDOM_MESSAGES = [
     msg: " ERROR 404: Keyboard not responding. Pressed CTRL+C & CTRL+VVVVVVV",
   },
   {
-    state:EState.WARNINGS,
+    state: EState.WARNINGS,
     msg: " WARNINGS: System overheating. Consider touching grass",
   },
 ];
 
-
-const GREETINGS:ITextProps[]=[
+const GREETINGS: ITextProps[] = [
   {
-    text:'Bonjour!',
-    style:` ${space_mono.className} text-green-400`,
-    cursorStyle:'bg-green-400'
-  }
-  ,
-  {
-    text:'Hola',
-    style:` ${space_grotesk.className} text-blue-400`,
-    cursorStyle:'bg-blue-400'
+    text: "Bonjour!",
+    style: ` ${space_mono.className} text-green-400`,
+    cursorStyle: "bg-green-400",
   },
   {
-    text:'Hello',
-    style:`${fira_code.className} text-yellow-400`,
-    cursorStyle:'bg-yellow-400'
+    text: "Hola",
+    style: ` ${space_grotesk.className} text-blue-400`,
+    cursorStyle: "bg-blue-400",
   },
   {
-    text:'Namaste!',
-    style:`${jetbrains_mono.className} text-pink-400`,
-    cursorStyle:'bg-pink-400'
+    text: "Hello",
+    style: `${fira_code.className} text-yellow-400`,
+    cursorStyle: "bg-yellow-400",
   },
   {
-    text:   'Hie',
+    text: "Namaste!",
+    style: `${jetbrains_mono.className} text-pink-400`,
+    cursorStyle: "bg-pink-400",
+  },
+  {
+    text: "Hie",
     style: `${pixelify_sans.className} text-emerald-400`,
-    cursorStyle:'bg-emerald-400'
-  }
-]
+    cursorStyle: "bg-emerald-400",
+  },
+];
 
-
-const STATE_STYLES  = {
+const STATE_STYLES = {
   [EState.ERROR]: {
     textClass: "text-red-500 font-bold",
-    font: silkscreen
+    font: silkscreen.className,
   },
   [EState.WARNINGS]: {
     textClass: "text-yellow-500",
-    font: pixelify_sans
+    font: pixelify_sans.className,
   },
   [EState.FACT]: {
     textClass: "text-green-400",
-    font: silkscreen
+    font: silkscreen.className,
   },
 };
 
-
-
-const LANGUAGES= [
+const LANGUAGES = [
   { text: "Python", svg: python },
   { text: "GoLang", svg: go },
   { text: "JavaScript", svg: js },
   { text: "TypeScript", svg: ts },
 ];
 
-const FRAMEWORKS  = [
+const FRAMEWORKS = [
   { text: "Next.JS", svg: nextjs },
   { text: "React.js", svg: reactjs },
   { text: "Node.js", svg: nodejs },
@@ -149,7 +158,6 @@ const TOOLS = [
   { text: "Git", svg: git },
   { text: "Kubernetes", svg: k8s },
 ];
-
 
 const PROGRAMMING_ITEMS = [
   "{ code && coffee }",
@@ -167,9 +175,8 @@ const PROGRAMMING_ITEMS = [
   "ls -la ~/.config",
   "systemctl restart mind.service",
   "import React from 'react'",
-  "arch btw"
+  "arch btw",
 ];
-
 
 const PROJECTS = [
   {
@@ -186,7 +193,7 @@ const PROJECTS = [
     ],
     github: {
       url: "https://github.com/Harshal292004/KGPDSH",
-      state:ELinkState.ACTIVE,
+      state: ELinkState.ACTIVE,
     },
     live_demo: { url: "", state: ELinkState.INACTIVE },
     isRightAligned: false,
@@ -250,5 +257,17 @@ const PROJECTS = [
   },
 ];
 
-
-export { LINKS,FUN_FACTS,RANDOM_MESSAGES ,GREETINGS,STATE_STYLES,LANGUAGES,FRAMEWORKS,DATABASES,TOOLS ,PROGRAMMING_ITEMS,PROJECTS};
+export {
+  LINKS,
+  FUN_FACTS,
+  RANDOM_MESSAGES,
+  GREETINGS,
+  STATE_STYLES,
+  LANGUAGES,
+  FRAMEWORKS,
+  DATABASES,
+  TOOLS,
+  PROGRAMMING_ITEMS,
+  PROJECTS,
+  QUICK_LINKS
+};

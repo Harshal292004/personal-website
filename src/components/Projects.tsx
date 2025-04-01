@@ -21,7 +21,7 @@ const Projects = ({ id }: { id: string }) => {
   const { theme } = useTheme();
 
   return (
-    <div className="w-full py-24 relative bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300">
+    <div  id={id} className="w-full py-24 relative bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300">
       {/* Background pattern - diagonal lines instead of grid */}
       <div
         className="absolute inset-0 opacity-20 dark:opacity-10"
@@ -70,7 +70,6 @@ const Projects = ({ id }: { id: string }) => {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            id={id}
             className="relative"
             initial={{ rotate: 0 }}
             animate={{ rotate: [-2, 2, -2] }}

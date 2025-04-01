@@ -11,6 +11,8 @@ import { useTheme } from "next-themes";
 import Star from "./ui/shapes/Star";
 import Dots from "./ui/shapes/Dots";
 import { PROJECT_BUTTON_VARIANTS } from "@/lib/variants";
+import { Code, Contact, Mail } from "lucide-react";
+import scrollToSection from "@/lib/scrollSection";
 
 const Experience = ({ id }: { id: string }) => {
   const { theme } = useTheme();
@@ -107,37 +109,37 @@ const Experience = ({ id }: { id: string }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-4 sm:gap-6">
-            <motion.a
-              href="#contact"
+            <motion.button
               className={`border-4 border-black dark:border-zinc-200 bg-emerald-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 px-4 sm:px-6 py-2 sm:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(161,161,170,0.5)] flex items-center gap-2 relative overflow-hidden cursor-pointer w-full sm:w-auto justify-center transition-colors duration-300`}
               variants={PROJECT_BUTTON_VARIANTS}
               initial="initial"
               whileHover="hover"
               whileTap="tap"
+              onClick={()=>scrollToSection({element_id:"projects"})}
             >
-              <RocketIcon className="w-4 h-4 sm:w-5 sm:h-5 dark:text-yellow-500 transition-colors duration-300" />
+              <Code className="w-4 h-4 sm:w-5 sm:h-5 dark:text-yellow-500 transition-colors duration-300" />
               <span
                 className={`${jetbrains_mono.className} text-base sm:text-lg text-black dark:text-zinc-200 transition-colors duration-300`}
               >
                 VIEW PROJECTS
               </span>
-            </motion.a>
+            </motion.button>
 
-            <motion.a
-              href="#contact"
+            <motion.button
               className={`border-4 border-black dark:border-zinc-200 bg-emerald-300 dark:bg-yellow-500 dark:hover:bg-yellow-600 px-4 sm:px-6 py-2 sm:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] flex items-center gap-2 relative overflow-hidden cursor-pointer w-full sm:w-auto justify-center transition-colors duration-300`}
               variants={PROJECT_BUTTON_VARIANTS}
               initial="initial"
               whileHover="hover"
               whileTap="tap"
+              onClick={()=>scrollToSection({element_id:"contact"})}
             >
-              <LightningBoltIcon className="w-4 h-4 sm:w-5 sm:h-5 text-black transition-colors duration-300" />
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-black transition-colors duration-300" />
               <span
                 className={`${jetbrains_mono.className} text-base sm:text-lg text-black transition-colors duration-300`}
               >
                 CONTACT ME
               </span>
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Corner decoration */}

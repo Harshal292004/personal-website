@@ -20,7 +20,7 @@ const Terminal = () => {
             <div></div>
           </div>
   
-          <div className="text-white font-mono h-8">
+          <div className="text-white font-mono h-10">
             <div className="mb-2">
               <span className={`${space_mono.className} text-blue-400`}>
                 [harshal@machine ~]$

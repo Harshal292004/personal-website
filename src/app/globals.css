@@ -216,44 +216,25 @@
   animation: wave 8s ease-in-out infinite;
 }
 
-
-html {
-  /* Enable smooth scrolling behavior */
-  scroll-behavior: smooth;
+body {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #000000;
 }
 
-/* Webkit browsers (Chrome, Safari, newer versions of Opera) */
-::-webkit-scrollbar {
-  width: 16px; /* Chunky neo-brutalist style */
+body::-webkit-scrollbar {
+  width: 16px;
 }
 
-::-webkit-scrollbar-track {
-  background: #e3dff2; /* Match your light mode bg */
-  border: 2px solid #000; /* Bold border for neo-brutalist look */
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #4CAF50; /* Green color base */
-  border: 2px solid #000; /* Bold border */
-  border-radius: 0px; /* Sharp corners for brutalist style */
-  box-shadow: var(--shadow); /* Use your existing shadow variable */
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #3e8e41; /* Darker green on hover */
-}
-
-/* For Firefox */
-* {
-  scrollbar-width: thick; /* Chunky scrollbar */
-  scrollbar-color: #4CAF50 #e3dff2; /* Green thumb, light track */
-}
-
-/* Dark mode adjustments */
-.dark ::-webkit-scrollbar-track {
-  background: #272733; /* Match your dark mode bg */
-}
-
-.dark * {
-  scrollbar-color: #4CAF50 #272733; /* Green thumb, dark track */
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
