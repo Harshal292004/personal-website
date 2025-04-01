@@ -97,7 +97,7 @@ const Footer = ({ id }: { id: string }) => {
               },
               {
                 icon: <LinkedInLogoIcon />,
-                link: "https://linkedin.com/in/yourprofile",
+                link: "https://www.linkedin.com/in/harshal-malani-592a91279/",
                 label: "LinkedIn",
               },
             ].map((item, index) => (

@@ -18,7 +18,7 @@ export default function Home() {
     // Simulate loading time or wait for resources to load
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2 seconds loading time
+    }, 4000); // 2 seconds loading time
 
     return () => clearTimeout(timer);
   }, []);
