@@ -9,16 +9,15 @@ import Experience from "@/components/Experience";
 import RandomDev from "@/components/ui/RandomDev";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import LoadingScreen from "@/components/Loader";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time or wait for resources to load
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); // 2 seconds loading time
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);

@@ -7,49 +7,13 @@ import Circle from "./ui/shapes/Circle";
 import Triangle from "./ui/shapes/Triangle";
 import Square from "./ui/shapes/Square";
 import Curly from "./ui/shapes/Curly";
+import { LETTER_VARIANTS, PLUSE_VARIANTS, PROGRESS_BAR_VARIANT } from "@/lib/variants";
 
 
 const LoadingScreen= ({ progress  }:{progress:number}) => {
   const { theme } = useTheme();
 
-  // Stagger animation for loading text letters
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-      },
-    }),
-  };
-
-  // Progress bar animation
-  const progressBarVariants = {
-    initial: { width: "0%" },
-    animate: { 
-      width: `${progress}%`,
-      transition: { 
-        duration: 0.8, 
-        ease: "easeInOut" 
-      }
-    },
-  };
-
-  // Pulse animation for shapes
-  const pulseVariants = {
-    pulse: {
-      scale: [1, 1.1, 1],
-      opacity: [0.7, 1, 0.7],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-      },
-    },
-  };
-
+  const PROGRESS_BAR_VARIANTS = PROGRESS_BAR_VARIANT({progress:progress})
   return (
     <div className="w-full h-screen flex items-center justify-center relative bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300">
       {/* Background pattern */}
@@ -63,7 +27,7 @@ const LoadingScreen= ({ progress  }:{progress:number}) => {
 
       {/* Decorative elements */}
       <motion.div
-        variants={pulseVariants}
+        variants={PLUSE_VARIANTS}
         animate="pulse"
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
       >
@@ -137,7 +101,7 @@ const LoadingScreen= ({ progress  }:{progress:number}) => {
             <motion.span
               key={index}
               custom={index}
-              variants={letterVariants}
+              variants={LETTER_VARIANTS}
               initial="hidden"
               animate="visible"
               className={`${jetbrains_mono.className} text-xl sm:text-2xl md:text-3xl ${letter === " " ? "w-4" : ""} text-black dark:text-gray-200`}
@@ -152,7 +116,7 @@ const LoadingScreen= ({ progress  }:{progress:number}) => {
           {/* Progress bar fill */}
           <motion.div
             className="h-full bg-violet-400 dark:bg-yellow-500"
-            variants={progressBarVariants}
+            variants={PROGRESS_BAR_VARIANTS}
             initial="initial"
             animate="animate"
           />

@@ -123,12 +123,52 @@ const PROJECT_TAG_VARIANTS = {
   },
 };
 
-const ICON_HOVER={
+const ICON_HOVER = {
   hover: {
     scale: 1.2,
     rotate: [0, -10, 10, -10, 0],
     transition: { duration: 0.3 },
   },
+};
+
+// Stagger animation for loading text letters
+const LETTER_VARIANTS = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+    },
+  }),
+};
+
+// Pulse animation for shapes
+const PLUSE_VARIANTS = {
+  pulse: {
+    scale: [1, 1.1, 1],
+    opacity: [0.7, 1, 0.7],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "reverse" as const,
+    },
+  },
+};
+
+const PROGRESS_BAR_VARIANT=({progress}:{progress:number})=>{
+  const P_VARIANT = {
+    initial: { width: "0%" },
+    animate: { 
+      width: `${progress}%`,
+      transition: { 
+        duration: 0.8, 
+        ease: "easeInOut" 
+      }
+    },
+  };
+  return P_VARIANT
 }
 
 export {
@@ -143,5 +183,8 @@ export {
   PROJECT_ITEM_VARIANTS,
   PROJECT_BUTTON_VARIANTS,
   PROJECT_TAG_VARIANTS,
-  ICON_HOVER
+  ICON_HOVER,
+  LETTER_VARIANTS,
+  PLUSE_VARIANTS,
+  PROGRESS_BAR_VARIANT
 };
