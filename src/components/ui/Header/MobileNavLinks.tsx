@@ -4,7 +4,7 @@ import { LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import scrollToSection from "@/lib/scrollSection";
-
+import { usePathname,useRouter } from "next/navigation";
 const MobileNavLinks = ({
   theme,
   setIsOpen,
@@ -12,6 +12,13 @@ const MobileNavLinks = ({
   theme: string | undefined;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>; // Changed from Boolean to boolean
 }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleRouteChange = ({ href }: { href: string }) => {
+    router.push(href);
+  };
+
   return (
     <>
       {LINKS.map((link, index) => (
@@ -39,10 +46,18 @@ const MobileNavLinks = ({
           onClick={(e) => {
             if (link.href.startsWith("#")) {
               e.preventDefault();
-              scrollToSection({ element_id: link.href.substring(1) });
-              setIsOpen(false);
+              if (pathname !== "/") {
+                handleRouteChange({ href: "/" });
+                setTimeout(() => {
+                  scrollToSection({ element_id: link.href.substring(1) });
+                }, 100); 
+              } else {
+                scrollToSection({ element_id: link.href.substring(1) });
+              }
+
+              setIsOpen(false)
             }
-          }}          
+          }}
         >
           <span className="flex items-center justify-between">
             {link.label}
