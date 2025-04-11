@@ -35,7 +35,9 @@ interface IProjectProps {
   live_demo: ILinks;
   isRightAligned: boolean;
 }
+type TMemeCategory = "cat" | "code" | "error" | "linux" | "miscellaneous";
+
 
 export  {EState,ELinkState}
 
-export type {ITextProps,ITech,ILinks,IProjectProps}
+export type {ITextProps,ITech,ILinks,IProjectProps,TMemeCategory}

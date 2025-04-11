@@ -13,17 +13,16 @@ import {
   vt323,
   press_start_2p,
 } from "@/lib/fonts";
-import { Mail, Moon, Sun, Check } from "lucide-react";
+import { Mail, Check } from "lucide-react";
 import { CONTAINER_VARIANTS, ITEM_VARIANTS, ICON_HOVER } from "@/lib/variants";
-import { useTheme } from "next-themes";
 import { QUICK_LINKS } from "@/lib/constants";
 import scrollToSection from "@/lib/scrollSection";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const Footer = ({ id }: { id: string }) => {
-  const { theme, setTheme } = useTheme();
   const [copied, setIsCopied] = useState(false);
-
+  const pathname = usePathname();
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("malaniharshal95@gmail.com");
     setIsCopied(true);
@@ -31,6 +30,10 @@ const Footer = ({ id }: { id: string }) => {
     setTimeout(() => {
       setIsCopied(false);
     }, 2000);
+  };
+  const router = useRouter();
+  const handleRouteChange = ({ href }: { href: string }) => {
+    router.push(href);
   };
 
   return (
@@ -60,7 +63,16 @@ const Footer = ({ id }: { id: string }) => {
                 {item.href.startsWith("#") ? (
                   <button
                     onClick={() => {
-                      scrollToSection({ element_id: item.href.substring(1) });
+                      if (pathname !== "/") {
+                        handleRouteChange({ href: "/" });
+                        setTimeout(() => {
+                          scrollToSection({
+                            element_id: item.href.substring(1),
+                          });
+                        }, 700);
+                      } else {
+                        scrollToSection({ element_id: item.href.substring(1) });
+                      }
                     }}
                     className={`${vt323.className} text-2xl sm:text-3xl font-bold border-b-4 border-black dark:border-yellow-500 inline-block pb-1 hover:bg-black dark:hover:bg-yellow-500 hover:text-green-400 dark:hover:text-zinc-900 px-2 transition-all duration-300`}
                   >

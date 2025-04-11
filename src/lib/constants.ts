@@ -8,7 +8,7 @@ import {
   space_grotesk,
   jetbrains_mono,
 } from "./fonts";
-
+import { TMemeCategory } from "./types";
 // languages import
 import python from "@/lib/techstack/languages/python.svg";
 import go from "@/lib/techstack/languages/go.svg";
@@ -29,6 +29,39 @@ import archlinux from "@/lib/techstack/tools/archlinux.svg";
 import docker from "@/lib/techstack/tools/docker.svg";
 import git from "@/lib/techstack/tools/git.svg";
 import k8s from "@/lib/techstack/tools/kubernetes.svg";
+
+// Memes
+import cat_backpropogation from '@/lib/memes/cat_backpropogation.jpg'
+import cpp_cat from '@/lib/memes/cpp_cat.jpg'
+import energy from '@/lib/memes/energy.jpg'
+import football_sudo from '@/lib/memes/football_sudo.jpg'
+import four_year_cat from '@/lib/memes/four_year_cat.jpg'
+import happy_code from '@/lib/memes/happy_code.jpg'
+import I_dont_know from '@/lib/memes/I_dont_know.jpg'
+import new_error from '@/lib/memes/new_error.jpg'
+import old_code from '@/lib/memes/old_code.jpg'
+import refactor_beaver from '@/lib/memes/refactor_beaver.jpg'
+import run_as_admin from '@/lib/memes/run_as_admin.jpg'
+import stance from '@/lib/memes/stance.jpg'
+import usr_bin_cat from '@/lib/memes/usr_bin_cat.jpg'
+
+const MEMES = [
+  { alt: "cat_backpropogation", meme: cat_backpropogation, credits: "Hacking Articles", category: "cat"},
+  { alt: "cpp_cat", meme: cpp_cat, credits: "Hacking Articles", category:"cat"},
+  { alt: "energy", meme: energy, credits: "Hacking Articles", category:"miscellaneous"},
+  { alt: "football_sudo", meme: football_sudo, credits: "Hacking Articles", href: "",category:"linux" },
+  { alt: "four_year_cat", meme: four_year_cat, credits: "Hacking Articles", category:"cat"},
+  { alt: "happy_code", meme: happy_code, credits: "Hacking Articles", category:"miscellaneous"},
+  { alt: "I_dont_know", meme: I_dont_know, credits: "Hacking Articles", category:"code"},
+  { alt: "new_error", meme: new_error, credits: "Hacking Articles", category:"error"},
+  { alt: "old_code", meme: old_code, credits: "Geeks For Geeks", href: "", category:"code" },
+  { alt: "refactor_beaver", meme: refactor_beaver, credits: "Hacking Articles", href: "",category:"code" },
+  { alt: "run_as_admin", meme: run_as_admin, credits: "Hacking Articles", category:"linux"},
+  { alt: "stance", meme: stance, credits: "Hacking Articles", category:"miscellaneous"},
+  { alt: "usr_bin_cat", meme: usr_bin_cat, credits: "Hacking Articles", href: "",category:"cat" },
+]
+
+
 
 const LINKS = [
   { href: "#home", label: "Home" },
@@ -257,6 +290,17 @@ const PROJECTS = [
   },
 ];
 
+
+const CATEGORY_EMOJIS: Record<TMemeCategory, string> = {
+  cat: "😺",
+  code: "👨‍💻",
+  error: "🐛",
+  linux: "🐧",
+  miscellaneous: "🎭"
+};
+
+
+
 export {
   LINKS,
   FUN_FACTS,
@@ -269,5 +313,7 @@ export {
   TOOLS,
   PROGRAMMING_ITEMS,
   PROJECTS,
-  QUICK_LINKS
+  QUICK_LINKS,
+  MEMES,
+  CATEGORY_EMOJIS
 };

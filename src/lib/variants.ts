@@ -170,6 +170,21 @@ const PROGRESS_BAR_VARIANT=({progress}:{progress:number})=>{
   };
   return P_VARIANT
 }
+const FILTER_BUTTON_VARIANTS = {
+  rest: { scale: 1 },
+  hover: { scale: 1.05 },
+  tap: { scale: 0.95 }
+};
+
+
+const EMOJI_VARIANTS = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.3 }
+  }
+};
 
 export {
   NAVBAR_VARIANTS,
@@ -186,5 +201,7 @@ export {
   ICON_HOVER,
   LETTER_VARIANTS,
   PLUSE_VARIANTS,
+  FILTER_BUTTON_VARIANTS,
+  EMOJI_VARIANTS,
   PROGRESS_BAR_VARIANT
 };
