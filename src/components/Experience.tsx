@@ -11,7 +11,7 @@ import { useTheme } from "next-themes";
 import Star from "./ui/shapes/Star";
 import Dots from "./ui/shapes/Dots";
 import { PROJECT_BUTTON_VARIANTS } from "@/lib/variants";
-import { Code, Contact, Mail } from "lucide-react";
+import { Code, Contact, Mail, Github } from "lucide-react";
 import scrollToSection from "@/lib/scrollSection";
 
 const Experience = ({ id }: { id: string }) => {
@@ -88,7 +88,7 @@ const Experience = ({ id }: { id: string }) => {
           </motion.div>
         </motion.div>
 
-        {/* Current status card */}
+        {/* Open Source Contribution Card */}
         <motion.div
           className="max-w-3xl mx-auto mb-8 sm:mb-16 border-6 sm:border-8 border-black dark:border-zinc-200 bg-white dark:bg-zinc-800 shadow-[8px_8px_0px_0px_rgba(0,0,0)] dark:shadow-[8px_8px_0px_0px_rgba(161,161,170,0.5)] p-4 sm:p-8 relative transition-colors duration-300"
           initial={{ opacity: 0, y: 20 }}
@@ -96,13 +96,92 @@ const Experience = ({ id }: { id: string }) => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex items-center justify-center mb-4 sm:mb-6">
+            <h2
+              className={`${jetbrains_mono.className} text-xl sm:text-2xl font-bold dark:text-zinc-200 transition-colors duration-300`}
+            >
+              Open Source Contributor : Kubeflow
+            </h2>
+          </div>
+
+          <p
+            className={`${fira_code.className} text-center text-base sm:text-lg mb-4 dark:text-zinc-300 transition-colors duration-300`}
+          >
+            I contributed to the kubeflow trainer
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            <span className="px-3 py-1 bg-emerald-200 dark:bg-zinc-700 border-2 border-black dark:border-zinc-500 rounded-full text-sm font-mono dark:text-zinc-300 transition-colors duration-300">
+              GoLang
+            </span>
+            <span className="px-3 py-1 bg-emerald-200 dark:bg-zinc-700 border-2 border-black dark:border-zinc-500 rounded-full text-sm font-mono dark:text-zinc-300 transition-colors duration-300">
+              DevOps
+            </span>
+            <span className="px-3 py-1 bg-emerald-200 dark:bg-zinc-700 border-2 border-black dark:border-zinc-500 rounded-full text-sm font-mono dark:text-zinc-300 transition-colors duration-300">
+              Kubernetes
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-4 sm:gap-6">
+            <motion.a
+              href="https://github.com/kubeflow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`border-4 border-black dark:border-zinc-200 bg-emerald-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 px-4 sm:px-6 py-2 sm:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(161,161,170,0.5)] flex items-center gap-2 relative overflow-hidden cursor-pointer w-full sm:w-auto justify-center transition-colors duration-300`}
+              variants={PROJECT_BUTTON_VARIANTS}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <Github className="w-4 h-4 sm:w-5 sm:h-5 dark:text-yellow-500 transition-colors duration-300" />
+              <span
+                className={`${jetbrains_mono.className} text-base sm:text-lg text-black dark:text-zinc-200 transition-colors duration-300`}
+              >
+                KUBEFLOW
+              </span>
+            </motion.a>
+
+            <motion.a
+              href="https://github.com/kubeflow/trainer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`border-4 border-black dark:border-zinc-200 bg-emerald-300 dark:bg-yellow-500 dark:hover:bg-yellow-600 px-4 sm:px-6 py-2 sm:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] flex items-center gap-2 relative overflow-hidden cursor-pointer w-full sm:w-auto justify-center transition-colors duration-300`}
+              variants={PROJECT_BUTTON_VARIANTS}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <Code className="w-4 h-4 sm:w-5 sm:h-5 text-black transition-colors duration-300" />
+              <span
+                className={`${jetbrains_mono.className} text-base sm:text-lg text-black transition-colors duration-300`}
+              >
+                KUBEFLOW TRAINER
+              </span>
+            </motion.a>
+          </div>
+
+          {/* Corner decoration */}
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 -right-6 sm:-right-8 -bottom-6 sm:-bottom-8 transform rotate-45 border-6 sm:border-8 border-black dark:border-zinc-200 bg-emerald-400 dark:bg-yellow-500 transition-colors duration-300"></div>
+        </motion.div>
+
+        {/* Current status card */}
+        <motion.div
+          className="max-w-3xl mx-auto mb-8 sm:mb-16 border-6 sm:border-8 border-black dark:border-zinc-200 bg-white dark:bg-zinc-800 shadow-[8px_8px_0px_0px_rgba(0,0,0)] dark:shadow-[8px_8px_0px_0px_rgba(161,161,170,0.5)] p-4 sm:p-8 relative transition-colors duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <div className="flex items-center justify-center mb-4 sm:mb-6">
             <CrossCircledIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 dark:text-yellow-500 transition-colors duration-300" />
-            <h2 className={`${jetbrains_mono.className} text-xl sm:text-2xl font-bold dark:text-zinc-200 transition-colors duration-300`}>
+            <h2
+              className={`${jetbrains_mono.className} text-xl sm:text-2xl font-bold dark:text-zinc-200 transition-colors duration-300`}
+            >
               Currently Building Experience
             </h2>
           </div>
 
-          <p className={`${fira_code.className} text-center text-base sm:text-lg mb-6 sm:mb-8 dark:text-zinc-300 transition-colors duration-300`}>
+          <p
+            className={`${fira_code.className} text-center text-base sm:text-lg mb-6 sm:mb-8 dark:text-zinc-300 transition-colors duration-300`}
+          >
             I'm actively working on projects and honing my skills. While formal
             experience is in progress, my portfolio demonstrates my capabilities
             and dedication to creating impactful solutions.
@@ -115,7 +194,7 @@ const Experience = ({ id }: { id: string }) => {
               initial="initial"
               whileHover="hover"
               whileTap="tap"
-              onClick={()=>scrollToSection({element_id:"projects"})}
+              onClick={() => scrollToSection({ element_id: "projects" })}
             >
               <Code className="w-4 h-4 sm:w-5 sm:h-5 dark:text-yellow-500 transition-colors duration-300" />
               <span
@@ -131,7 +210,7 @@ const Experience = ({ id }: { id: string }) => {
               initial="initial"
               whileHover="hover"
               whileTap="tap"
-              onClick={()=>scrollToSection({element_id:"contact"})}
+              onClick={() => scrollToSection({ element_id: "contact" })}
             >
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-black transition-colors duration-300" />
               <span
