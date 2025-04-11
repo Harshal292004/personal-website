@@ -27,45 +27,71 @@ const LoadingScreen = ({ progress }: { progress: number }) => {
         }}
       />
 
-      {/* Decorative elements with responsive positioning */}
+      {/* Decorative elements with enhanced responsive positioning */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        {/* Desktop decorative elements */}
+        {/* Large screen decorative elements */}
         <Circle 
           size={80} 
           color={theme === "light" ? "#059669" : "#f59e0b"} 
-          className="absolute top-1/3 right-1/4 hidden md:block" 
+          className="absolute top-1/3 right-1/4 hidden lg:block" 
         />
         <Triangle
           size={60}
           color={theme === "light" ? "#10b981" : "#eab308"}
-          className="absolute bottom-1/3 left-1/5 hidden md:block"
+          className="absolute bottom-1/3 left-1/5 hidden lg:block"
           rotation={-15}
         />
         <Curly
-          className="absolute top-1/3 right-1/3 hidden md:block"
+          className="absolute top-1/3 right-1/3 hidden lg:block"
           width={80}
           height={20}
           color={theme === "light" ? "#065f46" : "#f59e0b"} 
         />
 
-        {/* Mobile decorative elements */}
+        {/* Medium screen decorative elements */}
+        <Circle 
+          size={60} 
+          color={theme === "light" ? "#059669" : "#f59e0b"} 
+          className="absolute top-1/4 right-1/5 hidden md:block lg:hidden" 
+        />
+        <Triangle
+          size={40}
+          color={theme === "light" ? "#10b981" : "#eab308"}
+          className="absolute bottom-1/4 left-1/6 hidden md:block lg:hidden"
+          rotation={-10}
+        />
+
+        {/* Small screen decorative elements */}
         <Circle 
           size={40} 
           color={theme === "light" ? "#059669" : "#f59e0b"} 
-          className="absolute top-1/4 right-8 block md:hidden" 
+          className="absolute top-1/4 right-8 hidden sm:block md:hidden" 
         />
         <Triangle
           size={30}
           color={theme === "light" ? "#10b981" : "#eab308"}
-          className="absolute bottom-1/4 left-8 block md:hidden"
+          className="absolute bottom-1/4 left-8 hidden sm:block md:hidden"
           rotation={15}
+        />
+
+        {/* Extra small screen decorative elements */}
+        <Circle 
+          size={30} 
+          color={theme === "light" ? "#059669" : "#f59e0b"} 
+          className="absolute top-1/5 right-4 block sm:hidden" 
+        />
+        <Triangle
+          size={20}
+          color={theme === "light" ? "#10b981" : "#eab308"}
+          className="absolute bottom-1/5 left-4 block sm:hidden"
+          rotation={20}
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
-        {/* Loading Title - Responsive sizing */}
+      <div className="container mx-auto px-3 xs:px-4 sm:px-6 relative z-10 flex flex-col items-center">
+        {/* Loading Title - Enhanced responsive sizing */}
         <motion.div
-          className="relative mb-8 sm:mb-10 md:mb-12"
+          className="relative mb-4 xs:mb-6 sm:mb-8 md:mb-10 lg:mb-12"
           initial={{ rotate: 0 }}
           animate={{ rotate: [-2, 2, -2] }}
           transition={{
@@ -75,16 +101,38 @@ const LoadingScreen = ({ progress }: { progress: number }) => {
           }}
         >
           <h1
-            className={`${silkscreen.className} text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl border-4 sm:border-6 md:border-8 border-black dark:border-gray-200 py-2 sm:py-3 px-4 sm:px-6 md:px-8 bg-emerald-400 dark:bg-yellow-500 shadow-[4px_4px_0px_0px_rgba(0,0,0)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(229,231,235,0.8)] sm:dark:shadow-[6px_6px_0px_0px_rgba(229,231,235,0.8)] md:dark:shadow-[8px_8px_0px_0px_rgba(229,231,235,0.8)] transition-all duration-300`}
+            className={`${silkscreen.className} text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+                         border-2 xs:border-3 sm:border-4 md:border-6 lg:border-8 
+                         border-black dark:border-gray-200 
+                         py-1 xs:py-2 sm:py-2 md:py-3 
+                         px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 
+                         bg-emerald-400 dark:bg-yellow-500 
+                         shadow-[2px_2px_0px_0px_rgba(0,0,0)] 
+                         xs:shadow-[3px_3px_0px_0px_rgba(0,0,0)] 
+                         sm:shadow-[4px_4px_0px_0px_rgba(0,0,0)] 
+                         md:shadow-[6px_6px_0px_0px_rgba(0,0,0)] 
+                         lg:shadow-[8px_8px_0px_0px_rgba(0,0,0)] 
+                         dark:shadow-[2px_2px_0px_0px_rgba(229,231,235,0.8)] 
+                         xs:dark:shadow-[3px_3px_0px_0px_rgba(229,231,235,0.8)] 
+                         sm:dark:shadow-[4px_4px_0px_0px_rgba(229,231,235,0.8)] 
+                         md:dark:shadow-[6px_6px_0px_0px_rgba(229,231,235,0.8)] 
+                         lg:dark:shadow-[8px_8px_0px_0px_rgba(229,231,235,0.8)] 
+                         transition-all duration-300`}
           >
             LOADING
           </h1>
-          <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 md:-top-4 md:-right-4 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 bg-green-400 dark:bg-gray-700 border-2 sm:border-3 md:border-4 border-black dark:border-gray-200 z-10 rotate-12 transition-colors duration-300"></div>
-          <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 md:-bottom-4 md:-left-4 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 bg-emerald-400 dark:bg-gray-600 border-2 sm:border-3 md:border-4 border-black dark:border-gray-200 z-10 rotate-45 transition-colors duration-300"></div>
+          <div className="absolute -top-1 -right-1 xs:-top-1.5 xs:-right-1.5 sm:-top-2 sm:-right-2 md:-top-3 md:-right-3 lg:-top-4 lg:-right-4 
+                         w-3 h-3 xs:w-4 xs:h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 
+                         bg-green-400 dark:bg-gray-700 
+                         border border-black dark:border-gray-200 z-10 rotate-12 transition-colors duration-300"></div>
+          <div className="absolute -bottom-1 -left-1 xs:-bottom-1.5 xs:-left-1.5 sm:-bottom-2 sm:-left-2 md:-bottom-3 md:-left-3 lg:-bottom-4 lg:-left-4 
+                         w-3 h-3 xs:w-4 xs:h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 
+                         bg-emerald-400 dark:bg-gray-600 
+                         border border-black dark:border-gray-200 z-10 rotate-45 transition-colors duration-300"></div>
         </motion.div>
 
-        {/* Loading text animation - Responsive font size */}
-        <div className="flex justify-center mb-6 sm:mb-8">
+        {/* Loading text animation - Enhanced responsive font size */}
+        <div className="flex justify-center mb-3 xs:mb-4 sm:mb-6 lg:mb-8">
           {["P", "L", "E", "A", "S", "E", " ", "W", "A", "I", "T", "..."].map((letter, index) => (
             <motion.span
               key={index}
@@ -92,15 +140,30 @@ const LoadingScreen = ({ progress }: { progress: number }) => {
               variants={LETTER_VARIANTS}
               initial="hidden"
               animate="visible"
-              className={`${jetbrains_mono.className} text-lg xs:text-xl sm:text-2xl md:text-3xl ${letter === " " ? "w-2 sm:w-3 md:w-4" : ""} text-black dark:text-gray-200`}
+              className={`${jetbrains_mono.className} text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl ${letter === " " ? "w-1 xs:w-2 sm:w-3 md:w-4" : ""} text-black dark:text-gray-200`}
             >
               {letter}
             </motion.span>
           ))}
         </div>
 
-        {/* Progress bar container - Responsive height and max-width */}
-        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md h-8 sm:h-10 md:h-12 border-4 sm:border-6 md:border-8 border-black dark:border-gray-200 bg-white dark:bg-gray-700 relative overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(229,231,235,0.8)] sm:dark:shadow-[6px_6px_0px_0px_rgba(229,231,235,0.8)] md:dark:shadow-[8px_8px_0px_0px_rgba(229,231,235,0.8)]">
+        {/* Progress bar container - Enhanced responsive height and max-width */}
+        <div className="w-full max-w-xs xs:max-w-sm sm:max-w-sm md:max-w-md lg:max-w-lg 
+                       h-6 xs:h-7 sm:h-8 md:h-10 lg:h-12 
+                       border-2 xs:border-3 sm:border-4 md:border-6 lg:border-8 
+                       border-black dark:border-gray-200 
+                       bg-white dark:bg-gray-700 
+                       relative overflow-hidden 
+                       shadow-[2px_2px_0px_0px_rgba(0,0,0)] 
+                       xs:shadow-[3px_3px_0px_0px_rgba(0,0,0)] 
+                       sm:shadow-[4px_4px_0px_0px_rgba(0,0,0)] 
+                       md:shadow-[6px_6px_0px_0px_rgba(0,0,0)] 
+                       lg:shadow-[8px_8px_0px_0px_rgba(0,0,0)] 
+                       dark:shadow-[2px_2px_0px_0px_rgba(229,231,235,0.8)] 
+                       xs:dark:shadow-[3px_3px_0px_0px_rgba(229,231,235,0.8)] 
+                       sm:dark:shadow-[4px_4px_0px_0px_rgba(229,231,235,0.8)] 
+                       md:dark:shadow-[6px_6px_0px_0px_rgba(229,231,235,0.8)] 
+                       lg:dark:shadow-[8px_8px_0px_0px_rgba(229,231,235,0.8)]">
           {/* Progress bar fill */}
           <motion.div
             className="h-full bg-emerald-400 dark:bg-yellow-500"
@@ -109,23 +172,27 @@ const LoadingScreen = ({ progress }: { progress: number }) => {
             animate="animate"
           />
           
-          {/* Progress percentage - Responsive font size */}
+          {/* Progress percentage - Enhanced responsive font size */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className={`${jetbrains_mono.className} text-black dark:text-gray-200 font-bold text-sm sm:text-lg md:text-xl z-10`}>
+            <span className={`${jetbrains_mono.className} text-black dark:text-gray-200 font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl z-10`}>
               {Math.round(progress)}%
             </span>
           </div>
           
-          {/* Decorative accent - Responsive size */}
-          <div className="absolute top-1/2 right-2 sm:right-3 md:right-4 w-3 h-3 sm:w-4 sm:h-4 bg-green-400 dark:bg-gray-600 border border-black dark:border-gray-200 transform rotate-45 transition-colors duration-300"></div>
+          {/* Decorative accent - Enhanced responsive size */}
+          <div className="absolute top-1/2 right-1 xs:right-1.5 sm:right-2 md:right-3 lg:right-4 
+                         w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 
+                         bg-green-400 dark:bg-gray-600 
+                         border border-black dark:border-gray-200 
+                         transform -translate-y-1/2 rotate-45 transition-colors duration-300"></div>
         </div>
         
-        {/* Loading tip - Responsive font size and width */}
+        {/* Loading tip - Enhanced responsive font size and width */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className={`${jetbrains_mono.className} text-xs sm:text-sm mt-4 sm:mt-6 text-center max-w-xs sm:max-w-md text-black dark:text-gray-300 px-4`}
+          className={`${jetbrains_mono.className} text-xs xs:text-sm sm:text-base mt-3 xs:mt-4 sm:mt-5 md:mt-6 text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-black dark:text-gray-300 px-2 xs:px-3 sm:px-4`}
         >
           Assembling pixels in the most creative way possible...
         </motion.p>
