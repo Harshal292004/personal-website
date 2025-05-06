@@ -213,6 +213,22 @@ const PROGRAMMING_ITEMS = [
 
 const PROJECTS = [
   {
+    title:"Open Deep Research",
+    description: "Inspired by Perplexity AI's deep research , I wanted to build an open, modular version focused on agentic graph execution and LLM-tool integration. Open Deep Research replicates that flow using LangGraph and multiple toolchains, with a focus on flexibility and observability.",
+    tags:[
+      "Langchain",
+      "LangGraph",
+      "Groq",
+      "Together.ai"
+    ],
+    github:{
+      url: "https://github.com/Harshal292004/deep_research",
+      state:ELinkState.ACTIVE
+    },
+    live_demo:{url:"https://www.linkedin.com/posts/harshal-malani-592a91279_just-wrapped-up-building-open-deep-research-activity-7325229201509253120-tjWm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEP4Kv4BKo1HjugKwyA0S5DjQjZ6ceM7rpc",state:ELinkState.ACTIVE},
+    isRightAligned:true,
+  },
+  {
     title: "AI-Research Analyzer",
     description:
       "Developed an AI-driven system for research paper evaluation with 100% classification accuracy. Implemented conference recommendation logic with 60% accuracy, analyzing 150+ papers with detailed reports.",
