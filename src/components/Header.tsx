@@ -112,12 +112,10 @@ const Header = ({ id }: { id: string }) => {
                 )}
                 whileHover={{
                   scale: 1.05,
-                  shadow: "6px 6px 0px 0px #000000",
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{
                   scale: 0.95,
-                  shadow: "2px 2px 0px 0px #000000",
                 }}
               >
                 {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
@@ -135,12 +133,10 @@ const Header = ({ id }: { id: string }) => {
                 )}
                 whileHover={{
                   scale: 1.05,
-                  shadow: "6px 6px 0px 0px #000000",
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{
-                  scale: 0.95,
-                  shadow: "2px 2px 0px 0px #000000",
+                  scale: 0.95
                 }}
               >
                 <Mail size={20} /> Get in touch
