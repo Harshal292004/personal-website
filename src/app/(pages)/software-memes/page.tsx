@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { jetbrains_mono, silkscreen,space_mono } from "@/lib/fonts";
+import { jetbrains_mono, silkscreen, space_mono } from "@/lib/fonts";
 import { useTheme } from "next-themes";
 import Circle from "@/components/ui/shapes/Circle";
 import Triangle from "@/components/ui/shapes/Triangle";

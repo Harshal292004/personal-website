@@ -1,17 +1,17 @@
-"use client"
-import {motion} from 'framer-motion'
+"use client";
+import { motion } from "framer-motion";
 const Star = ({ className = "", color = "#43A047", size = 40 }) => {
   return (
-    <motion.div 
+    <motion.div
       className={`absolute ${className}`}
-      animate={{ 
+      animate={{
         scale: [1, 1.2, 1],
-        rotate: [0, 5, 0, -5, 0]
+        rotate: [0, 5, 0, -5, 0],
       }}
-      transition={{ 
+      transition={{
         duration: 4,
         repeat: Infinity,
-        repeatType: "reverse" 
+        repeatType: "reverse",
       }}
     >
       <svg
@@ -28,6 +28,6 @@ const Star = ({ className = "", color = "#43A047", size = 40 }) => {
       </svg>
     </motion.div>
   );
-  };
+};
 
-export default Star
+export default Star;

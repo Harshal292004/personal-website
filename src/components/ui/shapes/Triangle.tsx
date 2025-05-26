@@ -1,6 +1,11 @@
-"use client"
-import {motion} from 'framer-motion'
-const Triangle = ({ className = "", color = "#FF5722", size = 30,rotation = 0, }) => {
+"use client";
+import { motion } from "framer-motion";
+const Triangle = ({
+  className = "",
+  color = "#FF5722",
+  size = 30,
+  rotation = 0,
+}) => {
   return (
     <motion.div
       className={`absolute ${className}`}

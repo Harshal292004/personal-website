@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  GitHubLogoIcon,
-} from "@radix-ui/react-icons";
-import { jetbrains_mono, silkscreen } from "@/lib/fonts"
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { jetbrains_mono, silkscreen } from "@/lib/fonts";
 
-import { PROJECTS_CONTAINER_VARIANTS, PROJECT_BUTTON_VARIANTS } from "@/lib/variants";
+import {
+  PROJECTS_CONTAINER_VARIANTS,
+  PROJECT_BUTTON_VARIANTS,
+} from "@/lib/variants";
 
 import { useTheme } from "next-themes";
 
@@ -21,7 +22,10 @@ const Projects = ({ id }: { id: string }) => {
   const { theme } = useTheme();
 
   return (
-    <div  id={id} className="w-full py-24 relative bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300">
+    <div
+      id={id}
+      className="w-full py-24 relative bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300"
+    >
       {/* Background pattern - diagonal lines instead of grid */}
       <div
         className="absolute inset-0 opacity-20 dark:opacity-10"
@@ -32,10 +36,10 @@ const Projects = ({ id }: { id: string }) => {
       />
 
       {/* Decorative elements */}
-      <Circle 
-        size={80} 
-        color={theme === "light" ? "#f472b6" : "#f59e0b"} 
-        className="absolute top-20 right-16 md:block hidden" 
+      <Circle
+        size={80}
+        color={theme === "light" ? "#f472b6" : "#f59e0b"}
+        className="absolute top-20 right-16 md:block hidden"
       />
       <Triangle
         size={60}
@@ -43,22 +47,22 @@ const Projects = ({ id }: { id: string }) => {
         className="absolute bottom-40 left-40 md:block hidden"
         rotation={-15}
       />
-      <Square 
-        size={40} 
-        color={theme === "light" ? "#fb923c" : "#10b981"} 
-        className="absolute top-60 left-32 md:block hidden" 
+      <Square
+        size={40}
+        color={theme === "light" ? "#fb923c" : "#10b981"}
+        className="absolute top-60 left-32 md:block hidden"
       />
       <Curly
         className="absolute bottom-32 right-40 md:block hidden"
         width={120}
         height={30}
-        color={theme === "light" ? "#000" : "#f59e0b"} 
+        color={theme === "light" ? "#000" : "#f59e0b"}
       />
       <Curly
         className="absolute top-40 right-1/4 md:block hidden"
         width={80}
         height={20}
-        color={theme === "light" ? "#f472b6" : "#f59e0b"} 
+        color={theme === "light" ? "#f472b6" : "#f59e0b"}
       />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">

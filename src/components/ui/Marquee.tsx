@@ -4,15 +4,16 @@ import { fira_code } from "@/lib/fonts";
 import { PROGRAMMING_ITEMS } from "@/lib/constants";
 import { motion } from "framer-motion";
 
-
 export default function Marquee({ speed = 80 }) {
   return (
-    <div className="relative flex w-full overflow-x-hidden border-b-2 border-t-2 border-border 
-                    bg-emerald-900 dark:bg-zinc-900 text-emerald-50 dark:text-yellow-400 py-3">
+    <div
+      className="relative flex w-full overflow-x-hidden border-b-2 border-t-2 border-border 
+                    bg-emerald-900 dark:bg-zinc-900 text-emerald-50 dark:text-yellow-400 py-3"
+    >
       <motion.div
         className="whitespace-nowrap"
         animate={{
-          x: ["0%", "-50%"]
+          x: ["0%", "-50%"],
         }}
         transition={{
           duration: speed,

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { FUN_FACTS,RANDOM_MESSAGES,STATE_STYLES } from "../constants";
+import { FUN_FACTS, RANDOM_MESSAGES, STATE_STYLES } from "../constants";
 const useTypedFact = () => {
   const [currentFact, setCurrentFact] = useState(FUN_FACTS[0]);
   const [typedText, setTypedText] = useState("");
@@ -14,9 +14,12 @@ const useTypedFact = () => {
   useEffect(() => {
     if (isTyping) {
       if (typedText.length < currentFact.msg.length) {
-        const timeout = setTimeout(() => {
-          setTypedText(currentFact.msg.substring(0, typedText.length + 1));
-        }, Math.random() * 50 + 50);
+        const timeout = setTimeout(
+          () => {
+            setTypedText(currentFact.msg.substring(0, typedText.length + 1));
+          },
+          Math.random() * 50 + 50,
+        );
         return () => clearTimeout(timeout);
       } else {
         const timeout = setTimeout(() => setIsTyping(false), 2000);

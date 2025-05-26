@@ -1,8 +1,12 @@
-"use client"
+"use client";
 import { ELinkState, type IProjectProps } from "@/lib/types";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { PROJECT_ITEM_VARIANTS, PROJECT_BUTTON_VARIANTS, PROJECT_TAG_VARIANTS } from "@/lib/variants";
+import {
+  PROJECT_ITEM_VARIANTS,
+  PROJECT_BUTTON_VARIANTS,
+  PROJECT_TAG_VARIANTS,
+} from "@/lib/variants";
 import { jetbrains_mono, silkscreen, fira_code, space_mono } from "@/lib/fonts";
 import { useTheme } from "next-themes";
 
@@ -32,7 +36,7 @@ const ProjectCard = ({
     "#a3e635", // Green
     "#2dd4bf", // Teal
   ];
-  
+
   // Dark mode colors - still colorful but with lower saturation/brightness
   const darkBgColors = [
     "#9333ea", // Dark purple
@@ -42,7 +46,7 @@ const ProjectCard = ({
     "#65a30d", // Dark green
     "#0d9488", // Dark teal
   ];
-  
+
   const bgColors = theme === "dark" ? darkBgColors : lightBgColors;
   const bgColor = bgColors[index % bgColors.length];
 
@@ -76,7 +80,9 @@ const ProjectCard = ({
         <div className="p-4 sm:p-8">
           {/* Project number */}
           <div className="flex justify-between items-start mb-4">
-            <h3 className={`${jetbrains_mono.className} text-xl sm:text-3xl font-bold dark:text-gray-100`}>
+            <h3
+              className={`${jetbrains_mono.className} text-xl sm:text-3xl font-bold dark:text-gray-100`}
+            >
               {project.title}
             </h3>
             <div
@@ -105,7 +111,9 @@ const ProjectCard = ({
                 initial="initial"
                 whileHover="hover"
               >
-                <span className={`${space_mono.className} dark:text-gray-900`}>{tag}</span>
+                <span className={`${space_mono.className} dark:text-gray-900`}>
+                  {tag}
+                </span>
               </motion.span>
             ))}
           </div>
@@ -124,12 +132,20 @@ const ProjectCard = ({
                 whileTap="tap"
               >
                 <GitHubLogoIcon width={18} height={18} />
-                <span className={`${space_mono.className} text-sm sm:text-base`}>GITHUB</span>
+                <span
+                  className={`${space_mono.className} text-sm sm:text-base`}
+                >
+                  GITHUB
+                </span>
               </motion.a>
             ) : (
               <div className="flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-gray-200 dark:bg-gray-600 text-gray-500 dark:text-gray-400 border-4 border-gray-400 dark:border-gray-500 cursor-not-allowed transition-colors duration-300">
                 <Cross2Icon width={18} height={18} />
-                <span className={`${space_mono.className} text-sm sm:text-base`}>PRIVATE</span>
+                <span
+                  className={`${space_mono.className} text-sm sm:text-base`}
+                >
+                  PRIVATE
+                </span>
               </div>
             )}
 
@@ -145,12 +161,20 @@ const ProjectCard = ({
                 whileTap="tap"
               >
                 <ExternalLinkIcon width={18} height={18} />
-                <span className={`${space_mono.className} text-sm sm:text-base`}>LIVE DEMO</span>
+                <span
+                  className={`${space_mono.className} text-sm sm:text-base`}
+                >
+                  LIVE DEMO
+                </span>
               </motion.a>
             ) : (
               <div className="flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-gray-200 dark:bg-gray-600 text-gray-500 dark:text-gray-400 border-4 border-gray-400 dark:border-gray-500 cursor-not-allowed transition-colors duration-300">
                 <LinkBreak2Icon width={18} height={18} />
-                <span className={`${space_mono.className} text-sm sm:text-base`}>NO DEMO</span>
+                <span
+                  className={`${space_mono.className} text-sm sm:text-base`}
+                >
+                  NO DEMO
+                </span>
               </div>
             )}
           </div>

@@ -20,11 +20,9 @@ import Terminal from "./ui/Hero/Terminal";
 import useGreetingText from "@/lib/hooks/useGreetingsText";
 import scrollToSection from "@/lib/scrollSection";
 
-import { CONTAINER_VARIANTS,ITEM_VARIANTS } from "@/lib/variants";
+import { CONTAINER_VARIANTS, ITEM_VARIANTS } from "@/lib/variants";
 
-
-
-const Hero= ({ id }:{id:string}) => {
+const Hero = ({ id }: { id: string }) => {
   const { text, showCursor } = useGreetingText();
   const { theme } = useTheme();
 
@@ -39,13 +37,17 @@ const Hero= ({ id }:{id:string}) => {
                 bg-[size:70px_70px]"
     >
       {/* Decorative elements */}
-      <Star className="top-8 right-8 animate-pulse" color={theme === "dark" ? "#FFD54F" : "#43A047"} size={50} />
+      <Star
+        className="top-8 right-8 animate-pulse"
+        color={theme === "dark" ? "#FFD54F" : "#43A047"}
+        size={50}
+      />
       <Star
         className="top-16 left-16 animate-pulse"
         color={theme === "dark" ? "#FFECB3" : "#2E7D32"}
         size={30}
       />
-     
+
       <Circle
         className="top-12 left-1/4 animate-pulse"
         color={theme === "dark" ? "#E0E0E0" : "#FFA726"}
@@ -69,14 +71,14 @@ const Hero= ({ id }:{id:string}) => {
         className="flex flex-col md:flex-row justify-around items-center w-full max-w-7xl px-4 sm:px-6 gap-6 lg:gap-16 mt-2"
       >
         {/* About */}
-        <motion.div 
+        <motion.div
           variants={ITEM_VARIANTS}
           className="flex flex-col justify-center max-w-full w-full md:w-1/2"
         >
           {/* Greeting with typing animation */}
           <div
             className={twMerge(
-              `${text.style} max-w-[280px] text-2xl md:text-3xl lg:text-4xl tracking-widest flex items-center dark:text-yellow-300`
+              `${text.style} max-w-[280px] text-2xl md:text-3xl lg:text-4xl tracking-widest flex items-center dark:text-yellow-300`,
             )}
           >
             {text.text}
@@ -96,7 +98,7 @@ const Hero= ({ id }:{id:string}) => {
               `border-4 border-black dark:border-white shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.5)] p-4 
               bg-emerald-500 dark:bg-yellow-500 text-emerald-950 dark:text-zinc-900 
               hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)] 
-              transform hover:translate-x-1 hover:translate-y-1 transition-all`
+              transform hover:translate-x-1 hover:translate-y-1 transition-all`,
             )}
           >
             I'm Harshal Malani. <span className="wave-hand text-3xl">👋</span>
@@ -107,7 +109,7 @@ const Hero= ({ id }:{id:string}) => {
             variants={ITEM_VARIANTS}
             className={twMerge(
               `text-lg sm:text-xl md:text-2xl mt-3 mb-2 max-w-2xl`,
-              `${fira_code.className} text-green-900 dark:text-gray-200`
+              `${fira_code.className} text-green-900 dark:text-gray-200`,
             )}
           >
             I am a 2nd-year Information Technology student from Nagpur, India,
@@ -120,7 +122,7 @@ const Hero= ({ id }:{id:string}) => {
             variants={ITEM_VARIANTS}
             className={twMerge(
               `text-lg sm:text-xl md:text-2xl mb-4 max-w-2xl`,
-              `${fira_code.className} text-green-900 dark:text-gray-300`
+              `${fira_code.className} text-green-900 dark:text-gray-300`,
             )}
           >
             My interests lie in Cloud-Native Infrastructure and Generative AI. I
@@ -129,29 +131,35 @@ const Hero= ({ id }:{id:string}) => {
           </motion.p>
 
           {/* Terminal with Random Facts */}
-          <motion.div 
-            variants={ITEM_VARIANTS}
-            className="hidden md:block"
-          >
-            <Terminal/>
+          <motion.div variants={ITEM_VARIANTS} className="hidden md:block">
+            <Terminal />
           </motion.div>
         </motion.div>
 
         {/* Image section */}
         <motion.div
-          variants={ITEM_VARIANTS} 
+          variants={ITEM_VARIANTS}
           className="max-w-full w-full md:w-1/2 flex flex-col items-center md:items-end relative mb-6"
         >
-          <Star className="top-0 right-4 md:-top-6 md:right-12 animate-pulse" color={theme === "dark" ? "#FFC107" : undefined} />
-          <Star className="hidden md:block -left-6 top-1/4 animate-pulse" color={theme === "dark" ? "#E0E0E0" : undefined} />
-          <Star className="bottom-12 left-4 md:bottom-20 md:left-0 animate-pulse" color={theme === "dark" ? "#FFECB3" : undefined} />
+          <Star
+            className="top-0 right-4 md:-top-6 md:right-12 animate-pulse"
+            color={theme === "dark" ? "#FFC107" : undefined}
+          />
+          <Star
+            className="hidden md:block -left-6 top-1/4 animate-pulse"
+            color={theme === "dark" ? "#E0E0E0" : undefined}
+          />
+          <Star
+            className="bottom-12 left-4 md:bottom-20 md:left-0 animate-pulse"
+            color={theme === "dark" ? "#FFECB3" : undefined}
+          />
 
           <motion.div
             whileHover={{ rotate: 0, transition: { duration: 0.3 } }}
             className={twMerge(
               `border-8 border-black dark:border-white shadow-[12px_12px_0px_0px_rgba(0,0,0)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.2)] 
               p-4 sm:p-6 bg-emerald-200 dark:bg-zinc-800 -rotate-2 relative overflow-hidden`,
-              `w-64 h-auto sm:w-80 md:w-88 lg:w-[420px] flex flex-col items-center justify-center`
+              `w-64 h-auto sm:w-80 md:w-88 lg:w-[420px] flex flex-col items-center justify-center`,
             )}
           >
             <div className="text-center">
@@ -167,16 +175,13 @@ const Hero= ({ id }:{id:string}) => {
                   git config user.name "Harshal292004"
                 </motion.h3>
               </Link>
-              <motion.div 
-                className="relative"
-                whileHover={{ scale: 1.02 }}
-              >
+              <motion.div className="relative" whileHover={{ scale: 1.02 }}>
                 <Image
                   src={harshal}
                   alt="Harshal Malani"
                   className={twMerge(
                     "border-8 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all",
-                    `w-48 h-auto sm:w-56 md:w-64 lg:w-72`
+                    `w-48 h-auto sm:w-56 md:w-64 lg:w-72`,
                   )}
                 />
 
@@ -188,11 +193,11 @@ const Hero= ({ id }:{id:string}) => {
           </motion.div>
 
           {/* Terminal for mobile view */}
-          <motion.div 
+          <motion.div
             variants={ITEM_VARIANTS}
             className="md:hidden w-full mt-4 mb-2"
           >
-            <Terminal/>
+            <Terminal />
           </motion.div>
 
           <div className="flex flex-row justify-around items-center gap-4 mt-2">
@@ -205,7 +210,7 @@ const Hero= ({ id }:{id:string}) => {
                 <GitHubLogoIcon
                   className={twMerge(
                     `w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mt-4 md:mt-6 p-2 bg-black dark:bg-zinc-800 text-white`,
-                    "rounded-full shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all"
+                    "rounded-full shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all",
                   )}
                 ></GitHubLogoIcon>
               </Link>
@@ -219,7 +224,7 @@ const Hero= ({ id }:{id:string}) => {
                 <LinkedInLogoIcon
                   className={twMerge(
                     `w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mt-4 md:mt-6 p-2 bg-blue-700 dark:bg-blue-600 text-white`,
-                    "rounded-md shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all"
+                    "rounded-md shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all",
                   )}
                 ></LinkedInLogoIcon>
               </Link>
@@ -230,9 +235,11 @@ const Hero= ({ id }:{id:string}) => {
                 className={twMerge(
                   `${fira_code.className}`,
                   "h-12 text-base sm:h-14 sm:text-lg md:text-xl lg:h-16 lg:text-2xl mt-4 md:mt-6",
-                  "border-4 border-black dark:border-white bg-orange-400 dark:bg-yellow-500 hover:bg-orange-500 dark:hover:bg-yellow-600 text-orange-950 dark:text-zinc-900 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all"
+                  "border-4 border-black dark:border-white bg-orange-400 dark:bg-yellow-500 hover:bg-orange-500 dark:hover:bg-yellow-600 text-orange-950 dark:text-zinc-900 shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] transform hover:translate-x-1 hover:translate-y-1 transition-all",
                 )}
-                onClick={() => {scrollToSection({element_id:"contact"})}}
+                onClick={() => {
+                  scrollToSection({ element_id: "contact" });
+                }}
               >
                 GET IN TOUCH
               </Button>

@@ -1,5 +1,5 @@
 import { ELinkState, EState } from "./types";
-import type { ITextProps } from "./types";
+import type { ITextProps, IHeaderLinks } from "./types";
 import {
   pixelify_sans,
   silkscreen,
@@ -31,44 +31,111 @@ import git from "@/lib/techstack/tools/git.svg";
 import k8s from "@/lib/techstack/tools/kubernetes.svg";
 
 // Memes
-import cat_backpropogation from '@/lib/memes/cat_backpropogation.jpg'
-import cpp_cat from '@/lib/memes/cpp_cat.jpg'
-import energy from '@/lib/memes/energy.jpg'
-import football_sudo from '@/lib/memes/football_sudo.jpg'
-import four_year_cat from '@/lib/memes/four_year_cat.jpg'
-import happy_code from '@/lib/memes/happy_code.jpg'
-import I_dont_know from '@/lib/memes/I_dont_know.jpg'
-import new_error from '@/lib/memes/new_error.jpg'
-import old_code from '@/lib/memes/old_code.jpg'
-import refactor_beaver from '@/lib/memes/refactor_beaver.jpg'
-import run_as_admin from '@/lib/memes/run_as_admin.jpg'
-import stance from '@/lib/memes/stance.jpg'
-import usr_bin_cat from '@/lib/memes/usr_bin_cat.jpg'
+import cat_backpropogation from "@/lib/memes/cat_backpropogation.jpg";
+import cpp_cat from "@/lib/memes/cpp_cat.jpg";
+import energy from "@/lib/memes/energy.jpg";
+import football_sudo from "@/lib/memes/football_sudo.jpg";
+import four_year_cat from "@/lib/memes/four_year_cat.jpg";
+import happy_code from "@/lib/memes/happy_code.jpg";
+import I_dont_know from "@/lib/memes/I_dont_know.jpg";
+import new_error from "@/lib/memes/new_error.jpg";
+import old_code from "@/lib/memes/old_code.jpg";
+import refactor_beaver from "@/lib/memes/refactor_beaver.jpg";
+import run_as_admin from "@/lib/memes/run_as_admin.jpg";
+import stance from "@/lib/memes/stance.jpg";
+import usr_bin_cat from "@/lib/memes/usr_bin_cat.jpg";
 
 const MEMES = [
-  { alt: "cat_backpropogation", meme: cat_backpropogation, credits: "Hacking Articles", category: "cat"},
-  { alt: "cpp_cat", meme: cpp_cat, credits: "Hacking Articles", category:"cat"},
-  { alt: "energy", meme: energy, credits: "Hacking Articles", category:"miscellaneous"},
-  { alt: "football_sudo", meme: football_sudo, credits: "Hacking Articles", href: "",category:"linux" },
-  { alt: "four_year_cat", meme: four_year_cat, credits: "Hacking Articles", category:"cat"},
-  { alt: "happy_code", meme: happy_code, credits: "Hacking Articles", category:"miscellaneous"},
-  { alt: "I_dont_know", meme: I_dont_know, credits: "Hacking Articles", category:"code"},
-  { alt: "new_error", meme: new_error, credits: "Hacking Articles", category:"error"},
-  { alt: "old_code", meme: old_code, credits: "Geeks For Geeks", href: "", category:"code" },
-  { alt: "refactor_beaver", meme: refactor_beaver, credits: "Hacking Articles", href: "",category:"code" },
-  { alt: "run_as_admin", meme: run_as_admin, credits: "Hacking Articles", category:"linux"},
-  { alt: "stance", meme: stance, credits: "Hacking Articles", category:"miscellaneous"},
-  { alt: "usr_bin_cat", meme: usr_bin_cat, credits: "Hacking Articles", href: "",category:"cat" },
-]
+  {
+    alt: "cat_backpropogation",
+    meme: cat_backpropogation,
+    credits: "Hacking Articles",
+    category: "cat",
+  },
+  {
+    alt: "cpp_cat",
+    meme: cpp_cat,
+    credits: "Hacking Articles",
+    category: "cat",
+  },
+  {
+    alt: "energy",
+    meme: energy,
+    credits: "Hacking Articles",
+    category: "miscellaneous",
+  },
+  {
+    alt: "football_sudo",
+    meme: football_sudo,
+    credits: "Hacking Articles",
+    href: "",
+    category: "linux",
+  },
+  {
+    alt: "four_year_cat",
+    meme: four_year_cat,
+    credits: "Hacking Articles",
+    category: "cat",
+  },
+  {
+    alt: "happy_code",
+    meme: happy_code,
+    credits: "Hacking Articles",
+    category: "miscellaneous",
+  },
+  {
+    alt: "I_dont_know",
+    meme: I_dont_know,
+    credits: "Hacking Articles",
+    category: "code",
+  },
+  {
+    alt: "new_error",
+    meme: new_error,
+    credits: "Hacking Articles",
+    category: "error",
+  },
+  {
+    alt: "old_code",
+    meme: old_code,
+    credits: "Geeks For Geeks",
+    href: "",
+    category: "code",
+  },
+  {
+    alt: "refactor_beaver",
+    meme: refactor_beaver,
+    credits: "Hacking Articles",
+    href: "",
+    category: "code",
+  },
+  {
+    alt: "run_as_admin",
+    meme: run_as_admin,
+    credits: "Hacking Articles",
+    category: "linux",
+  },
+  {
+    alt: "stance",
+    meme: stance,
+    credits: "Hacking Articles",
+    category: "miscellaneous",
+  },
+  {
+    alt: "usr_bin_cat",
+    meme: usr_bin_cat,
+    credits: "Hacking Articles",
+    href: "",
+    category: "cat",
+  },
+];
 
-
-
-const LINKS = [
+const LINKS: IHeaderLinks[] = [
   { href: "#home", label: "Home" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "/software-memes", label: "My S/W Memes" },
-  { href: "/software-reads", label: "My S/W Reads" },
+  { href: "", label: "Resume" },
+  { href: "/software-memes", label: "S/W Memes" },
   { href: "/blogs", label: "Blogs" },
 ];
 
@@ -213,20 +280,19 @@ const PROGRAMMING_ITEMS = [
 
 const PROJECTS = [
   {
-    title:"Open Deep Research",
-    description: "Inspired by Perplexity AI's deep research , I wanted to build an open, modular version focused on agentic graph execution and LLM-tool integration. Open Deep Research replicates that flow using LangGraph and multiple toolchains, with a focus on flexibility and observability.",
-    tags:[
-      "Langchain",
-      "LangGraph",
-      "Groq",
-      "Together.ai"
-    ],
-    github:{
+    title: "Open Deep Research",
+    description:
+      "Inspired by Perplexity AI's deep research , I wanted to build an open, modular version focused on agentic graph execution and LLM-tool integration. Open Deep Research replicates that flow using LangGraph and multiple toolchains, with a focus on flexibility and observability.",
+    tags: ["Langchain", "LangGraph", "Groq", "Together.ai"],
+    github: {
       url: "https://github.com/Harshal292004/deep_research",
-      state:ELinkState.ACTIVE
+      state: ELinkState.ACTIVE,
     },
-    live_demo:{url:"https://www.linkedin.com/posts/harshal-malani-592a91279_just-wrapped-up-building-open-deep-research-activity-7325229201509253120-tjWm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEP4Kv4BKo1HjugKwyA0S5DjQjZ6ceM7rpc",state:ELinkState.ACTIVE},
-    isRightAligned:true,
+    live_demo: {
+      url: "https://www.linkedin.com/posts/harshal-malani-592a91279_just-wrapped-up-building-open-deep-research-activity-7325229201509253120-tjWm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEP4Kv4BKo1HjugKwyA0S5DjQjZ6ceM7rpc",
+      state: ELinkState.ACTIVE,
+    },
+    isRightAligned: true,
   },
   {
     title: "AI-Research Analyzer",
@@ -306,16 +372,13 @@ const PROJECTS = [
   },
 ];
 
-
 const CATEGORY_EMOJIS: Record<TMemeCategory, string> = {
   cat: "😺",
   code: "👨‍💻",
   error: "🐛",
   linux: "🐧",
-  miscellaneous: "🎭"
+  miscellaneous: "🎭",
 };
-
-
 
 export {
   LINKS,
@@ -331,5 +394,5 @@ export {
   PROJECTS,
   QUICK_LINKS,
   MEMES,
-  CATEGORY_EMOJIS
+  CATEGORY_EMOJIS,
 };

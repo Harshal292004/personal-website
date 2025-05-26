@@ -23,7 +23,7 @@ const Header = ({ id }: { id: string }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  
+
   // Modified useClickOutside implementation
   useClickOutside(menuRef, (e) => {
     // Only close if the click is not on the button
@@ -32,7 +32,7 @@ const Header = ({ id }: { id: string }) => {
       setIsOpen(false);
     }
   });
-  
+
   const showNav = useScrollHideNav();
 
   // Toggle dark mode
@@ -50,7 +50,7 @@ const Header = ({ id }: { id: string }) => {
     <>
       <motion.nav
         id={id}
-        className={`fixed left-0 bottom-5 z-50 w-full px-4 transition-all duration-500 ease-out ${
+        className={`fixed left-0 bottom-5 z-30 w-full px-4 transition-all duration-500 ease-out ${
           showNav
             ? "translate-y-0 opacity-100"
             : "translate-y-40 opacity-0 pointer-events-none"
@@ -67,7 +67,7 @@ const Header = ({ id }: { id: string }) => {
             theme === "dark"
               ? "bg-yellow-300 dark:text-gray-50 dark:bg-gray-800"
               : "bg-emerald-300 text-black",
-            `border-2 border-black shadow-[8px_8px_0px_0px_#000000] hover:shadow-[12px_12px_0px_0px_#000000]`
+            `border-2 border-black shadow-[8px_8px_0px_0px_#000000] hover:shadow-[12px_12px_0px_0px_#000000]`,
           )}
         >
           {/* Logo */}
@@ -108,7 +108,7 @@ const Header = ({ id }: { id: string }) => {
                 onClick={toggleTheme}
                 className={twMerge(
                   `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000]`,
-                  "dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-black bg-emerald-400 hover:bg-emerald-300"
+                  "dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-black bg-emerald-400 hover:bg-emerald-300",
                 )}
                 whileHover={{
                   scale: 1.05,
@@ -131,7 +131,7 @@ const Header = ({ id }: { id: string }) => {
                 }}
                 className={twMerge(
                   `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000] font-bold flex items-center gap-2`,
-                  "dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-black bg-emerald-400 hover:bg-emerald-300"
+                  "dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-black bg-emerald-400 hover:bg-emerald-300",
                 )}
                 whileHover={{
                   scale: 1.05,
@@ -154,7 +154,7 @@ const Header = ({ id }: { id: string }) => {
               ref={buttonRef}
               className={twMerge(
                 `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000]`,
-                "dark:bg-yellow-400 dark:text-black bg-emerald-400"
+                "dark:bg-yellow-400 dark:text-black bg-emerald-400",
               )}
               onClick={toggleMenu}
               whileHover={{ scale: 1.05 }}
@@ -191,7 +191,7 @@ const Header = ({ id }: { id: string }) => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className={twMerge(
                 `md:hidden mt-2 px-6 py-4 border-2 border-black shadow-[8px_8px_0px_0px_#000000]`,
-                " dark:bg-gray-800 dark:text-gray-50 bg-emerald-400"
+                " dark:bg-gray-800 dark:text-gray-50 bg-emerald-400",
               )}
             >
               <div className="flex flex-col space-y-4 max-h-[70vh] overflow-y-auto">
@@ -203,7 +203,7 @@ const Header = ({ id }: { id: string }) => {
                     onClick={toggleTheme}
                     className={twMerge(
                       `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000]`,
-                      "dark:bg-yellow-400 dark:text-black bg-emerald-400"
+                      "dark:bg-yellow-400 dark:text-black bg-emerald-400",
                     )}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -221,7 +221,7 @@ const Header = ({ id }: { id: string }) => {
                     }}
                     className={twMerge(
                       `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000] font-bold flex items-center gap-2`,
-                      "dark:bg-yellow-400 dark:text-black bg-emerald-400"
+                      "dark:bg-yellow-400 dark:text-black bg-emerald-400",
                     )}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

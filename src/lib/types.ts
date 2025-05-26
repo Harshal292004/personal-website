@@ -9,18 +9,21 @@ enum ELinkState {
   INACTIVE = "inactive",
 }
 
-
-interface ITextProps{
-  text:string,
-  style:string,
-  cursorStyle:string
+interface ITextProps {
+  text: string;
+  style: string;
+  cursorStyle: string;
 }
 
-interface ITech{
-  text:string,
-  svg:any
+interface IHeaderLinks {
+  href: string;
+  label: string;
 }
 
+interface ITech {
+  text: string;
+  svg: any;
+}
 
 interface ILinks {
   url: string;
@@ -37,7 +40,13 @@ interface IProjectProps {
 }
 type TMemeCategory = "cat" | "code" | "error" | "linux" | "miscellaneous";
 
+export { EState, ELinkState };
 
-export  {EState,ELinkState}
-
-export type {ITextProps,ITech,ILinks,IProjectProps,TMemeCategory}
+export type {
+  ITextProps,
+  ITech,
+  ILinks,
+  IProjectProps,
+  TMemeCategory,
+  IHeaderLinks,
+};
