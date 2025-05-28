@@ -314,18 +314,6 @@ const PROJECTS = [
     isRightAligned: false,
   },
   {
-    title: "Side",
-    description:
-      "SaaS platform that enables influencers to automate direct messages and audience interactions using AI-driven workflows. Integrated custom automation rules, NLP-based message generation, and webhook triggers.",
-    tags: ["Next.js", "TypeScript", "Webhooks", "Prisma", "PostgreSQL"],
-    github: {
-      url: "https://github.com/Harshal292004/side",
-      state: ELinkState.ACTIVE,
-    },
-    live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: true,
-  },
-  {
     title: "Virtual Mouse",
     description:
       "AI-driven gesture-based control system using OpenCV and Mediapipe, allowing users to interact with their monitor through virtual inputs. Enables functionalities like cursor movement, clicks, and scrolling.",
