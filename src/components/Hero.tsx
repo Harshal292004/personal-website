@@ -112,7 +112,7 @@ const Hero = ({ id }: { id: string }) => {
               `${fira_code.className} text-green-900 dark:text-gray-200`,
             )}
           >
-            I am a 2nd-year Information Technology student from Nagpur, India,
+            I am a 3rd-year Information Technology student from Nagpur, India,
             passionate about building software. As an Open Source Contributor
             and Web Developer, I actively contribute to projects that solve
             real-world problems.
