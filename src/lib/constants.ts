@@ -265,14 +265,11 @@ const PROGRAMMING_ITEMS = [
   "<div>Hello World</div>",
   "git commit -m 'fix: everything'",
   "function recursion() { return recursion(); }",
-  "i3wm + polybar",
-  "neofetch",
-  "vim > emacs",
   "while true; do echo 'coding'; done",
   "const life = 'code';",
   "yay -S aur-package",
   "/usr/bin/bash",
-  "ls -la ~/.config",
+  "ls ~/.config",
   "systemctl restart mind.service",
   "import React from 'react'",
   "arch btw",
@@ -312,6 +309,18 @@ const PROJECTS = [
     },
     live_demo: { url: "", state: ELinkState.INACTIVE },
     isRightAligned: false,
+  },
+  {
+    title: "Subscription Management Service",
+    description:
+      "High-performance, scalable microservice for managing user subscriptions built with Go. Features Redis caching for 99.4% performance improvement, JWT authentication, comprehensive API documentation, and clean architecture with PostgreSQL database.",
+    tags: ["Go", "Fiber", "PostgreSQL", "Redis", "JWT", "Docker", "GORM", "Swagger"],
+    github: {
+      url: "https://github.com/Harshal292004/subscription-service",
+      state: ELinkState.ACTIVE,
+    },
+    live_demo: { url: "", state: ELinkState.INACTIVE },
+    isRightAligned: true
   },
   {
     title: "Virtual Mouse",
