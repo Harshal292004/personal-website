@@ -40,6 +40,17 @@ interface IProjectProps {
 }
 type TMemeCategory = "cat" | "code" | "error" | "linux" | "miscellaneous";
 
+interface IBlog {
+  id: string;
+  title: string;
+  date: string;
+  tags: string[];
+  series: string;
+  summary: string;
+  content?: string; // Markdown content for full blog post
+  slug?: string; // URL-friendly slug
+}
+
 export { EState, ELinkState };
 
 export type {
@@ -49,4 +60,5 @@ export type {
   IProjectProps,
   TMemeCategory,
   IHeaderLinks,
+  IBlog,
 };
