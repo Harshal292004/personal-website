@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { jetbrains_mono, fira_code, space_mono } from "@/lib/fonts";
+import { jetbrains_mono, fira_code , space_mono} from "@/lib/fonts";
 import { useTheme } from "next-themes";
 import { ITEM_VARIANTS } from "@/lib/variants";
 import { twMerge } from "tailwind-merge";
@@ -20,9 +20,10 @@ const page = () => {
   const [dateFilter, setDateFilter] = useState("");
   const [selectedSeries, setSelectedSeries] = useState("");
 
+  // flat map helps to flatten the array of arrays into a single array
   const allTags = Array.from(new Set(blogs.flatMap((blog) => blog.tags)));
   const allSeries = Array.from(new Set(blogs.map((blog) => blog.series)));
-
+  // filter helps to filter the blogs based on the search query, tags, date and series
   const filteredBlogs = blogs.filter((blog) => {
     const matchesSearch =
       searchQuery === "" ||
@@ -39,13 +40,14 @@ const page = () => {
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+      prev.includes(tag) ? 
+      prev.filter((t) => t !== tag) : // if the tag is already selected, filter out the tag
+      [...prev, tag] // if the tag is not selected, add it
     );
   };
 
   return (
     <div className="dark:bg-zinc-900 bg-green-50 min-h-screen w-full relative overflow-hidden bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:80px_80px]">
-      <>
         <Star
           className="absolute top-12 right-16 animate-pulse"
           color={theme === "dark" ? "#FFD54F" : "#43A047"}
@@ -66,7 +68,6 @@ const page = () => {
           color={theme === "dark" ? "#F9A825" : "#FF5722"}
           size={18}
         />
-      </>
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
         <motion.h2
@@ -147,13 +148,10 @@ const page = () => {
               <X className="w-5 h-5" />
               <span>Clear Filters</span>
             </Button>
-
-
           </div>
         </div>
 
         <div className="h-1 bg-black dark:bg-white mb-12" />
-
         <div className="space-y-8">
           {isLoading ? (
             <div className="py-12 flex justify-center items-center">
@@ -180,8 +178,6 @@ const page = () => {
                 No blog found , Sorry !!!
               </motion.h2>
               :
-
-
               filteredBlogs.map((blog) => (
                 <motion.article
                   key={blog.id}
@@ -222,7 +218,6 @@ const page = () => {
                       <ArrowRight className="w-5 h-5" />
                     </Button>
                   </Link>
-
                 </motion.article>
               ))
           )}

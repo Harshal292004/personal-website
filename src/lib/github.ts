@@ -2,9 +2,9 @@ import matter from "gray-matter";
 import { IBlog } from "./types";
 
 const GITHUB_CONFIG = {
-  username: process.env.GITHUB_USERNAME || "your-username", 
-  repo: process.env.GITHUB_REPO || "your-blogs-repo",
-  branch: process.env.GITHUB_BRANCH || "main", 
+  username: process.env.GITHUB_USERNAME || "Harshal292004", 
+  repo: process.env.GITHUB_REPO || "personal-website",
+  branch: process.env.GITHUB_BRANCH || "blogs", 
   path: process.env.GITHUB_BLOGS_PATH || "blogs", 
 };
 
@@ -43,10 +43,13 @@ export async function fetchBlogList(): Promise<IBlog[]> {
 
     const files: GitHubFile[] = await response.json();
     
+    console.log(`files: ${JSON.stringify(files)}`);
     // Filter for markdown files only
     const markdownFiles = files.filter(
       (file) => file.type === "file" && file.name.endsWith(".md")
     );
+
+    console.log(`markdownFiles: ${JSON.stringify(markdownFiles)}`);
 
     // Fetch and parse each blog file's frontmatter
     const blogs = await Promise.all(
@@ -86,7 +89,7 @@ export async function fetchBlogList(): Promise<IBlog[]> {
         }
       })
     );
-    
+    console.log(`blogs: ${JSON.stringify(blogs)}`);
     return blogs
       .filter((blog): blog is IBlog => blog !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -119,7 +122,7 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
     const { data: frontmatter, content } = matter(rawContent);
 
     // Process image URLs in content
-    const processedContent = processImageUrls(content, slug);
+    const processedContent = processImageUrls(content);
 
     return {
       id: slug,
@@ -150,7 +153,7 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
  * - Absolute repo paths: /images/image.png -> blogs/images/image.png
  * - Relative paths: ./images/image.png or images/image.png -> blogs/images/image.png
  */
-export function processImageUrls(content: string, slug: string): string {
+export function processImageUrls(content: string, ): string {
   // Replace relative image paths with GitHub raw URLs
   const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
   
