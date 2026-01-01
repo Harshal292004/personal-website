@@ -135,15 +135,15 @@ const LINKS: IHeaderLinks[] = [
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "", label: "Resume" },
-  { href: "/software-memes", label: "S/W Memes" },
+  { href: "/software-memes", label: "Memes" },
   { href: "/blogs", label: "Blogs" },
 ];
 
 const QUICK_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#projects", label: "Projects" },
-  { href: "/software-memes", label: "My S/W Memes" },
-  { href: "/software-reads", label: "My S/W Reads" },
+  { href: "/software-memes", label: "Memes" },
+  { href: "/blogs", label: "Reads" },
 ];
 
 const FUN_FACTS = [
@@ -321,52 +321,7 @@ const PROJECTS = [
     },
     live_demo: { url: "", state: ELinkState.INACTIVE },
     isRightAligned: true
-  },
-  {
-    title: "Virtual Mouse",
-    description:
-      "AI-driven gesture-based control system using OpenCV and Mediapipe, allowing users to interact with their monitor through virtual inputs. Enables functionalities like cursor movement, clicks, and scrolling.",
-    tags: ["CrewAI", "Groq", "Llama-3.1(8b)", "OpenCV", "MediaPipe"],
-    github: {
-      url: "https://github.com/Harshal292004/virtual-mouse",
-      state: ELinkState.ACTIVE,
-    },
-    live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: false,
-  },
-  {
-    title: "Research Hub",
-    description:
-      "An innovative agentic platform where LLMs conduct expert-level research and generate academic papers from simple prompts. Enables seamless publication to a centralized hub.",
-    tags: ["CrewAI"],
-    github: {
-      url: "https://github.com/Harshal292004/resarch-agent-hub",
-      state: ELinkState.ACTIVE,
-    },
-    live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: true,
-  },
-  {
-    title: "Ground Water Level Analysis",
-    description:
-      "Analyzed European ground water level patterns using time series models like ARIMA and SARIMAX. Worked with large datasets for predictive analytics.",
-    tags: ["TensorFlow", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-    github: { url: "", state: ELinkState.INACTIVE },
-    live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: false,
-  },
-  {
-    title: "Virtual Painter",
-    description:
-      "Developed a virtual painter allowing users to draw and paint over a virtual canvas using Mediapipe's solutions and OpenCV.",
-    tags: ["Mediapipe", "OpenCV", "NumPy"],
-    github: {
-      url: "https://github.com/Harshal292004/virtual-Painter",
-      state: ELinkState.ACTIVE,
-    },
-    live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: true,
-  },
+  }
 ];
 
 const CATEGORY_EMOJIS: Record<TMemeCategory, string> = {

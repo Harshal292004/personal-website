@@ -43,13 +43,10 @@ export async function fetchBlogList(): Promise<IBlog[]> {
 
     const files: GitHubFile[] = await response.json();
     
-    console.log(`files: ${JSON.stringify(files)}`);
     // Filter for markdown files only
     const markdownFiles = files.filter(
       (file) => file.type === "file" && file.name.endsWith(".md")
     );
-
-    console.log(`markdownFiles: ${JSON.stringify(markdownFiles)}`);
 
     // Fetch and parse each blog file's frontmatter
     const blogs = await Promise.all(
@@ -89,7 +86,6 @@ export async function fetchBlogList(): Promise<IBlog[]> {
         }
       })
     );
-    console.log(`blogs: ${JSON.stringify(blogs)}`);
     return blogs
       .filter((blog): blog is IBlog => blog !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

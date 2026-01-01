@@ -28,7 +28,6 @@ const Header = ({ id }: { id: string }) => {
   useClickOutside(menuRef, (e) => {
     // Only close if the click is not on the button
     if (buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
-      console.log("Clicked outside");
       setIsOpen(false);
     }
   });

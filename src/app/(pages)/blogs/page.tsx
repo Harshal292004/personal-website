@@ -19,6 +19,7 @@ const page = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [dateFilter, setDateFilter] = useState("");
   const [selectedSeries, setSelectedSeries] = useState("");
+  const [loadingBlogId, setLoadingBlogId] = useState<string | null>(null);
 
   // flat map helps to flatten the array of arrays into a single array
   const allTags = Array.from(new Set(blogs.flatMap((blog) => blog.tags)));
@@ -206,16 +207,33 @@ const page = () => {
                   <p className="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
                     {blog.summary}
                   </p>
-                  <Link href={`/blogs/${blog.id}`}>
+                  <Link 
+                    href={`/blogs/${blog.id}`}
+                    onClick={() => setLoadingBlogId(blog.id)}
+                  >
                     <Button
+                      disabled={loadingBlogId === blog.id}
                       className="flex items-center gap-3 px-8 py-4 border-3 border-black dark:border-white 
     bg-emerald-500 dark:bg-yellow-500 text-black text-lg font-black
     shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]
     hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]
-    hover:translate-x-1 hover:translate-y-1 transition-all"
+    hover:translate-x-1 hover:translate-y-1 transition-all disabled:opacity-75 disabled:cursor-wait"
                     >
-                      <span>View More</span>
-                      <ArrowRight className="w-5 h-5" />
+                      {loadingBlogId === blog.id ? (
+                        <>
+                          <motion.div
+                            className="w-5 h-5 border-3 border-black dark:border-white border-t-transparent rounded-full"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                          />
+                          <span>Loading...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>View More</span>
+                          <ArrowRight className="w-5 h-5" />
+                        </>
+                      )}
                     </Button>
                   </Link>
                 </motion.article>

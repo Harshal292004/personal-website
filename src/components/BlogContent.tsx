@@ -3,7 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { fira_code, jetbrains_mono } from "@/lib/fonts";
+import { fira_code, jetbrains_mono ,space_grotesk } from "@/lib/fonts";
 import { twMerge } from "tailwind-merge";
 
 interface BlogContentProps {
@@ -36,7 +36,7 @@ export default function BlogContent({ content }: BlogContentProps) {
           h1: ({ node, ...props }) => (
             <h1
               className={twMerge(
-                `${jetbrains_mono.className} text-4xl md:text-5xl mb-4 mt-8`,
+                `${space_grotesk.className} text-4xl md:text-5xl mb-4 mt-8`,
                 "border-b-4 border-black dark:border-white pb-2"
               )}
               {...props}

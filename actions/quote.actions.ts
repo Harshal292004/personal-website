@@ -4,7 +4,6 @@ export async function getRandomQuote() {
     headers: { "Content-Type": "application/json" },
   });
   const data = await response.json();
-  console.log(data);
   if (!response.ok) {
     throw new Error(data.error || "Failed to get quote");
   }
