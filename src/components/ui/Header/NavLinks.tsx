@@ -17,10 +17,9 @@ const NavLinks = () => {
   return (
     <>
       {LINKS.map((link) => (
-        <>
+        <React.Fragment key={link.href}>
           {link.label === "Resume" ? (
-            <>
-              <motion.button
+              <motion.a
                 className={twMerge(
                   "px-3 py-1 font-bold text-black hover:-translate-y-1 transform transition-all duration-200",
                   "border-b-2 border-transparent hover:border-black relative group dark:text-yellow-400",
@@ -42,12 +41,7 @@ const NavLinks = () => {
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.2 }}
                 />
-              </motion.button>
-              <PdfViewer
-                modalIsOpen={modalIsOpen}
-                onRequestClose={() => setModalIsOpen(false)}
-              ></PdfViewer>
-            </>
+              </motion.a>
           ) : (
             <motion.a
               key={link.href}
@@ -88,8 +82,12 @@ const NavLinks = () => {
               />
             </motion.a>
           )}
-        </>
+        </React.Fragment>
       ))}
+      {/* <PdfViewer
+        modalIsOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      ></PdfViewer> */}
     </>
   );
 };

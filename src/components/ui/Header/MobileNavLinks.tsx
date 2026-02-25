@@ -24,10 +24,9 @@ const MobileNavLinks = ({
   return (
     <>
       {LINKS.map((link, index) => (
-        <>
+        <React.Fragment key={link.href}>
           {link.label === "Resume" ? (
-            <>
-              <motion.button
+              <motion.a
                 className={twMerge(
                   "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",
                   "transform transition-all duration-200 border-b-2 border-black",
@@ -59,12 +58,8 @@ const MobileNavLinks = ({
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.2 }}
                 />
-              </motion.button>
-              <PdfViewer
-                modalIsOpen={modalIsOpen}
-                onRequestClose={() => setModalIsOpen(false)}
-              ></PdfViewer>
-            </>
+              </motion.a>
+              
           ) : (
             <motion.a
               key={link.href}
@@ -116,8 +111,12 @@ const MobileNavLinks = ({
               />
             </motion.a>
           )}
-        </>
+        </React.Fragment>
       ))}
+      <PdfViewer
+        modalIsOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      ></PdfViewer>
     </>
   );
 };

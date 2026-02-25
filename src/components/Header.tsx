@@ -1,6 +1,6 @@
 "use client";
 // Imports
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Mail } from "lucide-react";
@@ -24,6 +24,12 @@ const Header = ({ id }: { id: string }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
   // Modified useClickOutside implementation
   useClickOutside(menuRef, (e) => {
     // Only close if the click is not on the button
@@ -44,6 +50,8 @@ const Header = ({ id }: { id: string }) => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };
+  if(!mounted)
+    return null;
 
   return (
     <>
