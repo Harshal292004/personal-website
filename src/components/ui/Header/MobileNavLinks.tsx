@@ -63,10 +63,10 @@ const MobileNavLinks = ({
           ) : (
             <motion.a
               key={link.href}
-              href={link.href}
-              target={!link.href.startsWith("#") ? "_blank" : "_self"}
+              href={link.href.startsWith("#") ? link.href : (link.href ? `/old${link.href}` : "")}
+              target={!link.href.startsWith("#") && !link.href.startsWith("/") ? "_blank" : "_self"}
               rel={
-                !link.href.startsWith("#") ? "noopener noreferrer" : undefined
+                !link.href.startsWith("#") && !link.href.startsWith("/") ? "noopener noreferrer" : undefined
               }
               className={twMerge(
                 "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",
@@ -87,8 +87,8 @@ const MobileNavLinks = ({
               onClick={(e) => {
                 if (link.href.startsWith("#")) {
                   e.preventDefault();
-                  if (pathname !== "/") {
-                    handleRouteChange({ href: "/" });
+                  if (pathname !== "/old") {
+                    handleRouteChange({ href: "/old" });
                     setTimeout(() => {
                       scrollToSection({ element_id: link.href.substring(1) });
                     }, 100);

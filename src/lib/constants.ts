@@ -277,6 +277,20 @@ const PROGRAMMING_ITEMS = [
 
 const PROJECTS = [
   {
+    title: "Anonymous Coder",
+    description: "Built a terminal-native AI coding agent inspired by modern autonomous developer workflows, focused on local-first execution, modular multi-agent orchestration, and extensible tool integration. The system uses LangGraph and LangChain to coordinate agent state, persistence, tracing, and filesystem-aware task execution, while supporting MCP-based plugins, codebase indexing, and multiple LLM providers through a Textual-powered CLI interface.",
+    tags: ["Langchain", "LangGraph", "Textual"],
+    github: {
+      url: "https://github.com/Harshal292004/AnonymousCoder",
+      state: ELinkState.ACTIVE,
+    },
+    live_demo: {
+      url: "",
+      state: ELinkState.INACTIVE,
+    },
+    isRightAligned: false,
+  },
+  {
     title: "Open Deep Research",
     description:
       "Inspired by Perplexity AI's deep research , I wanted to build an open, modular version focused on agentic graph execution and LLM-tool integration. Open Deep Research replicates that flow using LangGraph and multiple toolchains, with a focus on flexibility and observability.",

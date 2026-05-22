@@ -31,14 +31,39 @@ const Hero = ({ id }: { id: string }) => {
   return (
     <div
       id={id}
-      className="dark:bg-zinc-900 flex min-h-[80dvh] w-full flex-col items-center justify-center py-4 bg-green-50 
+      className="relative dark:bg-zinc-900 flex min-h-[80dvh] w-full flex-col items-center justify-center py-4 bg-green-50 
                 bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] 
                 dark:bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] 
                 bg-[size:70px_70px]"
     >
+      {/* New minimal site link (Top Right) */}
+      <motion.div
+        className="absolute top-6 right-6 sm:top-8 sm:right-8 z-20"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <motion.a
+          href="/"
+          className={twMerge(
+            `p-2 border-2 border-black shadow-[4px_4px_0px_0px_#000000] font-bold flex items-center gap-2 text-sm`,
+            "bg-emerald-400 hover:bg-emerald-300 text-black dark:bg-[#FFD54F] dark:hover:bg-yellow-300 ",
+          )}
+          whileHover={{
+            scale: 1.05,
+            transition: { duration: 0.2 },
+          }}
+          whileTap={{
+            scale: 0.95
+          }}
+        >
+          New minimal site
+        </motion.a>
+      </motion.div>
+
       {/* Decorative elements */}
       <Star
-        className="top-8 right-8 animate-pulse"
+        className="top-24 right-8 animate-pulse"
         color={theme === "dark" ? "#FFD54F" : "#43A047"}
         size={50}
       />
@@ -83,9 +108,8 @@ const Hero = ({ id }: { id: string }) => {
           >
             {text.text}
             <span
-              className={`ml-1 h-14 w-2 ${text.cursorStyle} ${
-                showCursor ? "opacity-100" : "opacity-0"
-              } transition-opacity dark:bg-yellow-300`}
+              className={`ml-1 h-14 w-2 ${text.cursorStyle} ${showCursor ? "opacity-100" : "opacity-0"
+                } transition-opacity dark:bg-yellow-300`}
             ></span>
           </div>
 

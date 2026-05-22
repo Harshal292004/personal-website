@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import ReactModal from "react-modal";
 import { X, Maximize2, Minimize2, Download } from "lucide-react";
 import { useState } from "react";
+import { handleDownloadResume, resume } from "@/lib/handleResumeDownload";
 
 const PdfViewer = ({
   modalIsOpen,
@@ -12,20 +13,11 @@ const PdfViewer = ({
   onRequestClose: () => void;
 }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const resume = "/harshal_malani.pdf";
-  const handleDownloadResume = () => {
-    const link = document.createElement("a");
-    link.href = resume;
-    link.download = "Harshal_Malani_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={onRequestClose}
+      bodyOpenClassName="overflow-hidden"
       className={twMerge(
         "fixed z-50 p-2 sm:p-4 transition-all duration-300",
         isFullScreen ? "inset-0" : "inset-0 flex items-center justify-center",

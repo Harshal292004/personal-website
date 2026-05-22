@@ -50,9 +50,11 @@
     0% {
       background-position: 50% 100%;
     }
+
     50% {
       background-position: 50% 0%;
     }
+
     100% {
       background-position: 50% 100%;
     }
@@ -62,24 +64,31 @@
     0% {
       transform: rotate(0deg);
     }
+
     10% {
       transform: rotate(14deg);
     }
+
     20% {
       transform: rotate(-8deg);
     }
+
     30% {
       transform: rotate(14deg);
     }
+
     40% {
       transform: rotate(-4deg);
     }
+
     50% {
       transform: rotate(10deg);
     }
+
     60% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(0deg);
     }
@@ -88,19 +97,21 @@
 
 :root {
   --main: #a388ee;
-  --overlay: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* background color overlay for alert dialogs, modals, etc. */
+  --overlay: rgba(0,
+      0,
+      0,
+      0.8);
+  /* background color overlay for alert dialogs, modals, etc. */
 
   --bg: #e3dff2;
-  --bw: #fff; /* white and secondary black e.g. utility class variant would be: bg-[#fff] dark:bg-[#212121] */
-  --blank: #000; /* blank black and white */
+  --bw: #fff;
+  /* white and secondary black e.g. utility class variant would be: bg-[#fff] dark:bg-[#212121] */
+  --blank: #000;
+  /* blank black and white */
   --border: #000;
   --text: #000;
-  --mtext: #000; /* text that is placed on background with main color e.g. text color of default button */
+  --mtext: #000;
+  /* text that is placed on background with main color e.g. text color of default button */
   --ring: #000;
   --ring-offset: #fff;
 
@@ -197,6 +208,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -207,6 +219,7 @@
     0% {
       transform: translateX(0%);
     }
+
     100% {
       transform: translateX(-100%);
     }
@@ -216,6 +229,7 @@
     0% {
       transform: translateX(100%);
     }
+
     100% {
       transform: translateX(0%);
     }
@@ -235,25 +249,84 @@
   animation: wave 8s ease-in-out infinite;
 }
 
-body {
+/* Old Retro Site Scrollbar - Neobrutalist high contrast */
+body.old-site-scrollbar {
   --sb-track-color: #ffffff;
   --sb-thumb-color: #000000;
 }
 
-body::-webkit-scrollbar {
+.dark body.old-site-scrollbar {
+  --sb-track-color: #1a1a1a;
+  --sb-thumb-color: #ffffff;
+}
+
+body.old-site-scrollbar::-webkit-scrollbar {
   width: 16px;
 }
 
-body::-webkit-scrollbar-track {
+body.old-site-scrollbar::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-left: 2px solid #000000;
+}
+
+.dark body.old-site-scrollbar::-webkit-scrollbar-track {
+  border-left: 2px solid #ffffff;
+}
+
+body.old-site-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border: 2px solid #000000;
+}
+
+.dark body.old-site-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid #ffffff;
+}
+
+/* New Minimal Site Scrollbar - Soft, rounded hand-crafted notebook aesthetics */
+body.new-site-scrollbar {
+  --sb-track-color: #faf8f5;
+  /* Warm Cream background */
+  --sb-thumb-color: #ebd9c8;
+  /* Soft pencil/cream accent */
+  --sb-thumb-hover-color: #d97706;
+  /* Golden warm glow */
+}
+
+.dark body.new-site-scrollbar {
+  --sb-track-color: #161819;
+  /* Midnight Charcoal background */
+  --sb-thumb-color: #2c2f30;
+  /* Charcoal ink/zinc color */
+  --sb-thumb-hover-color: #d97706;
+  /* Golden warm glow */
+}
+
+body.new-site-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body.new-site-scrollbar::-webkit-scrollbar-track {
   background: var(--sb-track-color);
 }
 
-body::-webkit-scrollbar-thumb {
+body.new-site-scrollbar::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
+  border-radius: 9999px;
+  border: 2.5px solid var(--sb-track-color);
+}
+
+body.new-site-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover-color);
 }
 
 @supports not selector(::-webkit-scrollbar) {
-  body {
+  body.old-site-scrollbar {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+
+  body.new-site-scrollbar {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    scrollbar-width: thin;
   }
 }

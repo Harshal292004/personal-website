@@ -2,10 +2,10 @@ import matter from "gray-matter";
 import { IBlog } from "./types";
 
 const GITHUB_CONFIG = {
-  username: process.env.GITHUB_USERNAME || "Harshal292004", 
+  username: process.env.GITHUB_USERNAME || "Harshal292004",
   repo: process.env.GITHUB_REPO || "personal-website",
-  branch: process.env.GITHUB_BRANCH || "blogs", 
-  path: process.env.GITHUB_BLOGS_PATH || "blogs", 
+  branch: process.env.GITHUB_BRANCH || "blogs",
+  path: process.env.GITHUB_BLOGS_PATH || "blogs",
 };
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -26,7 +26,7 @@ interface GitHubFile {
 export async function fetchBlogList(): Promise<IBlog[]> {
   try {
     const url = `${GITHUB_API_BASE}/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}?ref=${GITHUB_CONFIG.branch}`;
-    
+
     const response = await fetch(url, {
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -34,7 +34,7 @@ export async function fetchBlogList(): Promise<IBlog[]> {
           Authorization: `token ${process.env.GITHUB_TOKEN}`,
         }),
       },
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -42,7 +42,7 @@ export async function fetchBlogList(): Promise<IBlog[]> {
     }
 
     const files: GitHubFile[] = await response.json();
-    
+
     // Filter for markdown files only
     const markdownFiles = files.filter(
       (file) => file.type === "file" && file.name.endsWith(".md")
@@ -56,7 +56,7 @@ export async function fetchBlogList(): Promise<IBlog[]> {
           const contentResponse = await fetch(contentUrl, {
             next: { revalidate: 3600 },
           });
-          
+
           if (!contentResponse.ok) {
             throw new Error(`Failed to fetch ${file.name}`);
           }
@@ -75,8 +75,8 @@ export async function fetchBlogList(): Promise<IBlog[]> {
             tags: Array.isArray(frontmatter.tags)
               ? frontmatter.tags
               : frontmatter.tags
-              ? [frontmatter.tags]
-              : [],
+                ? [frontmatter.tags]
+                : [],
             series: frontmatter.series || "",
             summary: frontmatter.summary || content.slice(0, 150) + "...",
           } as IBlog;
@@ -102,7 +102,7 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
   try {
     const filename = `${slug}.md`;
     const contentUrl = `${GITHUB_RAW_BASE}/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}/${filename}`;
-    
+
     const response = await fetch(contentUrl, {
       next: { revalidate: 3600 },
     });
@@ -128,8 +128,8 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
       tags: Array.isArray(frontmatter.tags)
         ? frontmatter.tags
         : frontmatter.tags
-        ? [frontmatter.tags]
-        : [],
+          ? [frontmatter.tags]
+          : [],
       series: frontmatter.series || "",
       summary: frontmatter.summary || content.slice(0, 150) + "...",
       content: processedContent, // Full markdown content with processed image URLs
@@ -149,16 +149,16 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
  * - Absolute repo paths: /images/image.png -> blogs/images/image.png
  * - Relative paths: ./images/image.png or images/image.png -> blogs/images/image.png
  */
-export function processImageUrls(content: string, ): string {
+export function processImageUrls(content: string,): string {
   // Replace relative image paths with GitHub raw URLs
   const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
-  
+
   return content.replace(imageRegex, (match, alt, url) => {
     // If it's already an absolute URL, leave it as is
     if (url.startsWith("http://") || url.startsWith("https://")) {
       return match;
     }
-    
+
     // Handle different path scenarios
     let imagePath: string;
     if (url.startsWith("/")) {
@@ -170,9 +170,9 @@ export function processImageUrls(content: string, ): string {
       const cleanUrl = url.startsWith("./") ? url.slice(2) : url;
       imagePath = `${GITHUB_CONFIG.path}/${cleanUrl}`;
     }
-    
+
     const imageUrl = `${GITHUB_RAW_BASE}/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${imagePath}`;
-    
+
     return `![${alt}](${imageUrl})`;
   });
 }
