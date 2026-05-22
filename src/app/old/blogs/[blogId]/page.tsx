@@ -34,7 +34,7 @@ export default async function BlogPage({
               "bg-white dark:bg-zinc-800 text-black dark:text-white font-bold",
               "shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]",
               "hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]",
-              "hover:translate-x-1 hover:translate-y-1 transition-all"
+              "hover:translate-x-1 hover:translate-y-1 transition-all",
             )}
           >
             <ArrowLeft className="w-4 h-4" />
@@ -48,7 +48,7 @@ export default async function BlogPage({
           <h1
             className={twMerge(
               `${jetbrains_mono.className} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4`,
-              "text-black dark:text-white"
+              "text-black dark:text-white",
             )}
           >
             {blog.title}

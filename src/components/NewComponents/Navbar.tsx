@@ -37,7 +37,6 @@ export const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -60,10 +59,14 @@ export const Navbar = () => {
       <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between relative">
         {/* Handwriting Styled Logo */}
         <Link href="/" className="group flex flex-col">
-          <span className={`${caveat.className} text-2xl font-bold text-zinc-800 dark:text-zinc-200 transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105`}>
+          <span
+            className={`${caveat.className} text-2xl font-bold text-zinc-800 dark:text-zinc-200 transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105`}
+          >
             h.malani
           </span>
-          <span className={`${space_mono.className} text-[9px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest`}>
+          <span
+            className={`${space_mono.className} text-[9px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest`}
+          >
             engineer
           </span>
         </Link>
@@ -74,24 +77,23 @@ export const Navbar = () => {
             {navLinks.map((link) => {
               return (
                 <li key={link.label}>
-                  {
-                    link.href.startsWith("/") ? (
-                      <Link
-                        href={link.href}
-                        className="relative py-1 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100 group"
-                      >
-                        {link.label}
-                        <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#d97706] transition-all duration-300 group-hover:w-full" />
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleNavClick(link.href)}
-                        className="relative py-1 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100 group"
-                      >
-                        {link.label}
-                        <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#d97706] transition-all duration-300 group-hover:w-full" />
-                      </button>
-                    )}
+                  {link.href.startsWith("/") ? (
+                    <Link
+                      href={link.href}
+                      className="relative py-1 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100 group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#d97706] transition-all duration-300 group-hover:w-full" />
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => handleNavClick(link.href)}
+                      className="relative py-1 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100 group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#d97706] transition-all duration-300 group-hover:w-full" />
+                    </button>
+                  )}
                 </li>
               );
             })}
@@ -156,7 +158,9 @@ export const Navbar = () => {
                   const isExternal = link.href.startsWith("/");
                   return (
                     <li key={link.label} className="relative">
-                      <span className={`${caveat.className} absolute -left-6 top-1 text-rose-500/70 select-none text-xl`}>
+                      <span
+                        className={`${caveat.className} absolute -left-6 top-1 text-rose-500/70 select-none text-xl`}
+                      >
                         ✎
                       </span>
                       {isExternal ? (

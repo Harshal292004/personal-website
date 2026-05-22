@@ -278,7 +278,8 @@ const PROGRAMMING_ITEMS = [
 const PROJECTS = [
   {
     title: "Anonymous Coder",
-    description: "Built a terminal-native AI coding agent inspired by modern autonomous developer workflows, focused on local-first execution, modular multi-agent orchestration, and extensible tool integration. The system uses LangGraph and LangChain to coordinate agent state, persistence, tracing, and filesystem-aware task execution, while supporting MCP-based plugins, codebase indexing, and multiple LLM providers through a Textual-powered CLI interface.",
+    description:
+      "Built a terminal-native AI coding agent inspired by modern autonomous developer workflows, focused on local-first execution, modular multi-agent orchestration, and extensible tool integration. The system uses LangGraph and LangChain to coordinate agent state, persistence, tracing, and filesystem-aware task execution, while supporting MCP-based plugins, codebase indexing, and multiple LLM providers through a Textual-powered CLI interface.",
     tags: ["Langchain", "LangGraph", "Textual"],
     github: {
       url: "https://github.com/Harshal292004/AnonymousCoder",
@@ -328,14 +329,23 @@ const PROJECTS = [
     title: "Subscription Management Service",
     description:
       "High-performance, scalable microservice for managing user subscriptions built with Go. Features Redis caching for 99.4% performance improvement, JWT authentication, comprehensive API documentation, and clean architecture with PostgreSQL database.",
-    tags: ["Go", "Fiber", "PostgreSQL", "Redis", "JWT", "Docker", "GORM", "Swagger"],
+    tags: [
+      "Go",
+      "Fiber",
+      "PostgreSQL",
+      "Redis",
+      "JWT",
+      "Docker",
+      "GORM",
+      "Swagger",
+    ],
     github: {
       url: "https://github.com/Harshal292004/subscription-service",
       state: ELinkState.ACTIVE,
     },
     live_demo: { url: "", state: ELinkState.INACTIVE },
-    isRightAligned: true
-  }
+    isRightAligned: true,
+  },
 ];
 
 const CATEGORY_EMOJIS: Record<TMemeCategory, string> = {

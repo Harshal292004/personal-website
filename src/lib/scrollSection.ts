@@ -7,7 +7,7 @@ const scrollToSection = function ({ element_id }: { element_id: string }) {
         block: "start",
         inline: "nearest",
       });
-    } 
+    }
   }, 100);
 };
 

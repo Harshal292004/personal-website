@@ -6,7 +6,10 @@ interface DoodleProps {
   color?: string;
 }
 
-export const Underline = ({ className, color = "currentColor" }: DoodleProps) => {
+export const Underline = ({
+  className,
+  color = "currentColor",
+}: DoodleProps) => {
   return (
     <svg
       viewBox="0 0 200 20"
@@ -37,7 +40,10 @@ export const Underline = ({ className, color = "currentColor" }: DoodleProps) =>
   );
 };
 
-export const CircleHighlight = ({ className, color = "currentColor" }: DoodleProps) => {
+export const CircleHighlight = ({
+  className,
+  color = "currentColor",
+}: DoodleProps) => {
   return (
     <svg
       viewBox="0 0 120 40"
@@ -91,7 +97,10 @@ export const Arrow = ({ className, color = "currentColor" }: DoodleProps) => {
   );
 };
 
-export const WavyDivider = ({ className, color = "currentColor" }: DoodleProps) => {
+export const WavyDivider = ({
+  className,
+  color = "currentColor",
+}: DoodleProps) => {
   return (
     <svg
       viewBox="0 0 400 12"

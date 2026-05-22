@@ -21,4 +21,3 @@ export async function getBlogById(id: string): Promise<IBlog | null> {
     return null;
   }
 }
-  

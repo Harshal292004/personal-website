@@ -7,9 +7,11 @@ import { motion } from "framer-motion";
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-20 border-t border-[#ebd9c8] dark:border-zinc-800 transition-colors duration-500">
+    <section
+      id="projects"
+      className="py-20 border-t border-[#ebd9c8] dark:border-zinc-800 transition-colors duration-500"
+    >
       <div className="max-w-3xl mx-auto px-6">
-
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -18,11 +20,15 @@ export const Projects = () => {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3 mb-12"
         >
-          <h2 className={`${space_mono.className} text-xs font-semibold uppercase tracking-wider text-[#d97706]`}>
+          <h2
+            className={`${space_mono.className} text-xs font-semibold uppercase tracking-wider text-[#d97706]`}
+          >
             Projects
           </h2>
           <span className="flex-1 h-[1px] bg-dashed border-t border-[#ebd9c8] dark:border-zinc-800" />
-          <span className={`${caveat.className} text-xl text-rose-500/70 -rotate-2 select-none`}>
+          <span
+            className={`${caveat.className} text-xl text-rose-500/70 -rotate-2 select-none`}
+          >
             what I've built
           </span>
         </motion.div>
@@ -43,7 +49,9 @@ export const Projects = () => {
                 className="relative p-6 rounded-2xl border border-[#ebd9c8] dark:border-zinc-800/80 bg-[#f9f5ee]/50 dark:bg-zinc-900/30 hover:bg-[#f9f5ee]/80 dark:hover:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
-                  <h3 className={`${lora.className} text-xl md:text-2xl font-medium text-zinc-900 dark:text-zinc-50 group-hover:text-[#d97706] transition-colors duration-300`}>
+                  <h3
+                    className={`${lora.className} text-xl md:text-2xl font-medium text-zinc-900 dark:text-zinc-50 group-hover:text-[#d97706] transition-colors duration-300`}
+                  >
                     {project.title}
                   </h3>
 
@@ -75,7 +83,9 @@ export const Projects = () => {
                 </div>
 
                 {/* Description */}
-                <p className={`${lora.className} text-zinc-700 dark:text-zinc-300 font-light leading-relaxed mb-6`}>
+                <p
+                  className={`${lora.className} text-zinc-700 dark:text-zinc-300 font-light leading-relaxed mb-6`}
+                >
                   {project.description}
                 </p>
 

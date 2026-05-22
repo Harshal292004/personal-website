@@ -25,7 +25,7 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
         "prose-li:mb-2 prose-li:pl-1",
         "prose-pre:bg-zinc-100 dark:prose-pre:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 overflow-x-auto",
         "prose-code:text-[#d97706] prose-code:text-sm prose-code:font-mono",
-        "prose-hr:border-zinc-200 dark:prose-hr:border-zinc-800 my-10"
+        "prose-hr:border-zinc-200 dark:prose-hr:border-zinc-800 my-10",
       )}
     >
       <ReactMarkdown
@@ -36,7 +36,7 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
           h1: ({ node, ...props }) => (
             <h1
               className={twMerge(
-                `${lora.className} text-3xl md:text-4xl mb-6 mt-10 font-normal`
+                `${lora.className} text-3xl md:text-4xl mb-6 mt-10 font-normal`,
               )}
               {...props}
             />
@@ -44,7 +44,7 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
           h2: ({ node, ...props }) => (
             <h2
               className={twMerge(
-                `${lora.className} text-2xl md:text-3xl mb-4 mt-8 font-normal`
+                `${lora.className} text-2xl md:text-3xl mb-4 mt-8 font-normal`,
               )}
               {...props}
             />
@@ -52,7 +52,7 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
           h3: ({ node, ...props }) => (
             <h3
               className={twMerge(
-                `${lora.className} text-xl md:text-2xl mb-3 mt-6 font-normal`
+                `${lora.className} text-xl md:text-2xl mb-3 mt-6 font-normal`,
               )}
               {...props}
             />
@@ -62,7 +62,10 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
             return !inline ? (
               <pre className="overflow-x-auto p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                 <code
-                  className={twMerge(`${space_mono.className} text-xs text-zinc-800 dark:text-zinc-300`, className)}
+                  className={twMerge(
+                    `${space_mono.className} text-xs text-zinc-800 dark:text-zinc-300`,
+                    className,
+                  )}
                   {...props}
                 >
                   {children}
@@ -109,7 +112,7 @@ export default function NewBlogContent({ content }: NewBlogContentProps) {
           p: ({ node, ...props }: any) => (
             <p
               className={twMerge(
-                `${lora.className} mb-6 text-zinc-800 dark:text-zinc-200 leading-relaxed font-light text-base md:text-lg`
+                `${lora.className} mb-6 text-zinc-800 dark:text-zinc-200 leading-relaxed font-light text-base md:text-lg`,
               )}
               {...props}
             />

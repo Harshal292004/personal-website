@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { jetbrains_mono, fira_code , space_mono} from "@/lib/fonts";
+import { jetbrains_mono, fira_code, space_mono } from "@/lib/fonts";
 import { useTheme } from "next-themes";
 import { ITEM_VARIANTS } from "@/lib/variants";
 import { twMerge } from "tailwind-merge";
@@ -40,35 +40,36 @@ const page = () => {
   });
 
   const toggleTag = (tag: string) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? 
-      prev.filter((t) => t !== tag) : // if the tag is already selected, filter out the tag
-      [...prev, tag] // if the tag is not selected, add it
+    setSelectedTags(
+      (prev) =>
+        prev.includes(tag)
+          ? prev.filter((t) => t !== tag) // if the tag is already selected, filter out the tag
+          : [...prev, tag], // if the tag is not selected, add it
     );
   };
 
   return (
     <div className="dark:bg-zinc-900 bg-green-50 min-h-screen w-full relative overflow-hidden bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:80px_80px]">
-        <Star
-          className="absolute top-12 right-16 animate-pulse"
-          color={theme === "dark" ? "#FFD54F" : "#43A047"}
-          size={40}
-        />
-        <Star
-          className="absolute top-20 left-12 animate-pulse"
-          color={theme === "dark" ? "#FFECB3" : "#2E7D32"}
-          size={25}
-        />
-        <Circle
-          className="absolute top-32 right-1/4 animate-pulse"
-          color={theme === "dark" ? "#E0E0E0" : "#FFA726"}
-          size={20}
-        />
-        <Triangle
-          className="absolute top-16 right-1/3 animate-pulse"
-          color={theme === "dark" ? "#F9A825" : "#FF5722"}
-          size={18}
-        />
+      <Star
+        className="absolute top-12 right-16 animate-pulse"
+        color={theme === "dark" ? "#FFD54F" : "#43A047"}
+        size={40}
+      />
+      <Star
+        className="absolute top-20 left-12 animate-pulse"
+        color={theme === "dark" ? "#FFECB3" : "#2E7D32"}
+        size={25}
+      />
+      <Circle
+        className="absolute top-32 right-1/4 animate-pulse"
+        color={theme === "dark" ? "#E0E0E0" : "#FFA726"}
+        size={20}
+      />
+      <Triangle
+        className="absolute top-16 right-1/3 animate-pulse"
+        color={theme === "dark" ? "#F9A825" : "#FF5722"}
+        size={18}
+      />
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
         <motion.h2
@@ -81,7 +82,7 @@ const page = () => {
             `border-4 border-black dark:border-white shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.5)] p-5 
               bg-emerald-500 dark:bg-yellow-500 text-emerald-950 dark:text-zinc-900 
               hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)] 
-              transform hover:translate-x-1 hover:translate-y-1 transition-all`
+              transform hover:translate-x-1 hover:translate-y-1 transition-all`,
           )}
         >
           Welcome to my blogs ✍🏼
@@ -112,7 +113,7 @@ const page = () => {
                   "px-3 py-1 border-2 border-black dark:border-white font-bold text-sm transition-all",
                   selectedTags.includes(tag)
                     ? "bg-emerald-500 dark:bg-yellow-500 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]"
-                    : "bg-white dark:bg-zinc-700 text-black dark:text-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]"
+                    : "bg-white dark:bg-zinc-700 text-black dark:text-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]",
                 )}
               >
                 {tag}
@@ -120,7 +121,6 @@ const page = () => {
             ))}
           </div>
           <div className="mt-4 flex flex-col md:flex-row  md:items-center gap-4">
-
             <select
               value={selectedSeries}
               onChange={(e) => setSelectedSeries(e.target.value)}
@@ -162,82 +162,85 @@ const page = () => {
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
             </div>
-          ) : (
-            filteredBlogs.length === 0 ?
-              <motion.h2
-                variants={ITEM_VARIANTS}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ scale: 1.02 }}
-                className={twMerge(
-                  `${fira_code.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl my-8 mx-auto max-w-fit`,
-                  ` p-5 
+          ) : filteredBlogs.length === 0 ? (
+            <motion.h2
+              variants={ITEM_VARIANTS}
+              initial="hidden"
+              animate="visible"
+              whileHover={{ scale: 1.02 }}
+              className={twMerge(
+                `${fira_code.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl my-8 mx-auto max-w-fit`,
+                ` p-5 
                   text-emerald-950 dark:text-white 
-                  transform hover:translate-x-1 hover:translate-y-1 transition-all`
-                )}
+                  transform hover:translate-x-1 hover:translate-y-1 transition-all`,
+              )}
+            >
+              No blog found , Sorry !!!
+            </motion.h2>
+          ) : (
+            filteredBlogs.map((blog) => (
+              <motion.article
+                key={blog.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="border-4 border-black dark:border-white p-6 bg-white dark:bg-zinc-800 shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.5)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)] hover:translate-x-1 hover:translate-y-1 transition-all"
               >
-                No blog found , Sorry !!!
-              </motion.h2>
-              :
-              filteredBlogs.map((blog) => (
-                <motion.article
-                  key={blog.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="border-4 border-black dark:border-white p-6 bg-white dark:bg-zinc-800 shadow-[6px_6px_0px_0px_rgba(0,0,0)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.5)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)] hover:translate-x-1 hover:translate-y-1 transition-all"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                    <h3 className="text-2xl md:text-3xl font-black text-black dark:text-white">
-                      {blog.title}
-                    </h3>
-                    <span className="text-sm font-bold text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                      {blog.date}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                  <h3 className="text-2xl md:text-3xl font-black text-black dark:text-white">
+                    {blog.title}
+                  </h3>
+                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                    {blog.date}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {blog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 border-2 border-black dark:border-white bg-emerald-100 dark:bg-yellow-200 text-black text-xs font-bold"
+                    >
+                      {tag}
                     </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 border-2 border-black dark:border-white bg-emerald-100 dark:bg-yellow-200 text-black text-xs font-bold"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-                    {blog.summary}
-                  </p>
-                  <Link 
-                    href={`/blogs/${blog.id}`}
-                    onClick={() => setLoadingBlogId(blog.id)}
-                  >
-                    <Button
-                      disabled={loadingBlogId === blog.id}
-                      className="flex items-center gap-3 px-8 py-4 border-3 border-black dark:border-white 
+                  ))}
+                </div>
+                <p className="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                  {blog.summary}
+                </p>
+                <Link
+                  href={`/blogs/${blog.id}`}
+                  onClick={() => setLoadingBlogId(blog.id)}
+                >
+                  <Button
+                    disabled={loadingBlogId === blog.id}
+                    className="flex items-center gap-3 px-8 py-4 border-3 border-black dark:border-white 
     bg-emerald-500 dark:bg-yellow-500 text-black text-lg font-black
     shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]
     hover:shadow-[2px_2px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]
     hover:translate-x-1 hover:translate-y-1 transition-all disabled:opacity-75 disabled:cursor-wait"
-                    >
-                      {loadingBlogId === blog.id ? (
-                        <>
-                          <motion.div
-                            className="w-5 h-5 border-3 border-black dark:border-white border-t-transparent rounded-full"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                          />
-                          <span>Loading...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>View More</span>
-                          <ArrowRight className="w-5 h-5" />
-                        </>
-                      )}
-                    </Button>
-                  </Link>
-                </motion.article>
-              ))
+                  >
+                    {loadingBlogId === blog.id ? (
+                      <>
+                        <motion.div
+                          className="w-5 h-5 border-3 border-black dark:border-white border-t-transparent rounded-full"
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                        <span>Loading...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>View More</span>
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </Button>
+                </Link>
+              </motion.article>
+            ))
           )}
         </div>
       </div>

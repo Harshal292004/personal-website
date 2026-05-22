@@ -27,7 +27,9 @@ export default function Home() {
       {/* Handcrafted footer */}
       <footer className="py-12 border-t border-[#ebd9c8] dark:border-zinc-800 text-center text-xs font-mono text-zinc-400 dark:text-zinc-500">
         <div>Harshal Malani © 2026</div>
-        <div className="mt-1 text-[10px]">Built with Next.js, Framer Motion & Coffee ☕</div>
+        <div className="mt-1 text-[10px]">
+          Built with Next.js, Framer Motion & Coffee ☕
+        </div>
       </footer>
     </div>
   );

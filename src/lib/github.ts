@@ -38,14 +38,16 @@ export async function fetchBlogList(): Promise<IBlog[]> {
     });
 
     if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `GitHub API error: ${response.status} ${response.statusText}`,
+      );
     }
 
     const files: GitHubFile[] = await response.json();
 
     // Filter for markdown files only
     const markdownFiles = files.filter(
-      (file) => file.type === "file" && file.name.endsWith(".md")
+      (file) => file.type === "file" && file.name.endsWith(".md"),
     );
 
     // Fetch and parse each blog file's frontmatter
@@ -84,7 +86,7 @@ export async function fetchBlogList(): Promise<IBlog[]> {
           console.error(`Error processing ${file.name}:`, error);
           return null;
         }
-      })
+      }),
     );
     return blogs
       .filter((blog): blog is IBlog => blog !== null)
@@ -111,7 +113,9 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
       if (response.status === 404) {
         return null;
       }
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `GitHub API error: ${response.status} ${response.statusText}`,
+      );
     }
 
     const rawContent = await response.text();
@@ -143,13 +147,13 @@ export async function fetchBlogContent(slug: string): Promise<IBlog | null> {
 /**
  * Processes image URLs in markdown content to use GitHub raw URLs
  * This ensures images referenced in markdown are loaded from the GitHub repo
- * 
+ *
  * Supports:
  * - Absolute URLs: https://example.com/image.png (unchanged)
  * - Absolute repo paths: /images/image.png -> blogs/images/image.png
  * - Relative paths: ./images/image.png or images/image.png -> blogs/images/image.png
  */
-export function processImageUrls(content: string,): string {
+export function processImageUrls(content: string): string {
   // Replace relative image paths with GitHub raw URLs
   const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
 
@@ -176,4 +180,3 @@ export function processImageUrls(content: string,): string {
     return `![${alt}](${imageUrl})`;
   });
 }
-

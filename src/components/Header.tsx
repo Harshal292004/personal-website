@@ -24,11 +24,11 @@ const Header = ({ id }: { id: string }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-useEffect(() => {
-  setMounted(true);
-}, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Modified useClickOutside implementation
   useClickOutside(menuRef, (e) => {
@@ -50,8 +50,7 @@ useEffect(() => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };
-  if(!mounted)
-    return null;
+  if (!mounted) return null;
 
   return (
     <>
@@ -143,7 +142,7 @@ useEffect(() => {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{
-                  scale: 0.95
+                  scale: 0.95,
                 }}
               >
                 <Mail size={20} /> Get in touch

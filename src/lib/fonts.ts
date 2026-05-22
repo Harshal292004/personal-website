@@ -7,7 +7,6 @@ import {
   VT323,
   Silkscreen,
   Press_Start_2P,
-  Share_Tech_Mono,
   Lora,
   Caveat,
 } from "next/font/google";
@@ -24,8 +23,11 @@ const pixelify_sans = Pixelify_Sans({ weight: "700", subsets: ["latin"] });
 const vt323 = VT323({ weight: "400", subsets: ["latin"] });
 const silkscreen = Silkscreen({ weight: "400", subsets: ["latin"] });
 const press_start_2p = Press_Start_2P({ weight: "400", subsets: ["latin"] });
-const share_tech_mono = Share_Tech_Mono({ weight: "400", subsets: ["latin"] });
-const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"], style: ["normal", "italic"] });
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
 export {
@@ -37,7 +39,6 @@ export {
   vt323,
   silkscreen,
   press_start_2p,
-  share_tech_mono,
   lora,
   caveat,
 };

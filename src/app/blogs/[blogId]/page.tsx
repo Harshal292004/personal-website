@@ -24,21 +24,20 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <div className="min-h-screen bg-[#f9f5ee] dark:bg-[#161819] text-zinc-800 dark:text-zinc-200 transition-colors duration-500 selection:bg-[#ebd9c8] dark:selection:bg-zinc-800 relative pb-24">
-
-
       <main className="max-w-2xl mx-auto px-6 pt-16">
-
         {/* Back navigation */}
         <Link
           href="/blogs"
           className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors mb-12 group"
         >
-          <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft
+            size={12}
+            className="transition-transform group-hover:-translate-x-1"
+          />
           <span>Back to Readings</span>
         </Link>
 
         <article>
-
           {/* Header metadata */}
           <div className="flex items-center gap-3 mb-4 text-xs font-mono text-zinc-400 dark:text-zinc-500">
             <div className="flex items-center gap-1">
@@ -53,13 +52,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
             {blog.series && (
               <>
                 <span>•</span>
-                <span className="text-[#d97706]/85 font-semibold">{blog.series}</span>
+                <span className="text-[#d97706]/85 font-semibold">
+                  {blog.series}
+                </span>
               </>
             )}
           </div>
 
           {/* Title */}
-          <h1 className={`${lora.className} text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-zinc-900 dark:text-zinc-50 mb-6`}>
+          <h1
+            className={`${lora.className} text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-zinc-900 dark:text-zinc-50 mb-6`}
+          >
             {blog.title}
           </h1>
 
@@ -81,7 +84,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
         {/* Post footer notebook drawing */}
         <div className="mt-16 pt-8 border-t border-[#ebd9c8] dark:border-zinc-800 text-center select-none">
-          <span className={`${caveat.className} text-2xl text-zinc-400 dark:text-zinc-600`}>
+          <span
+            className={`${caveat.className} text-2xl text-zinc-400 dark:text-zinc-600`}
+          >
             End of blog • Thank you for reading.
           </span>
         </div>

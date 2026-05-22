@@ -11,7 +11,10 @@ interface NewPdfViewerProps {
   onRequestClose: () => void;
 }
 
-export const NewPdfViewer = ({ modalIsOpen, onRequestClose }: NewPdfViewerProps) => {
+export const NewPdfViewer = ({
+  modalIsOpen,
+  onRequestClose,
+}: NewPdfViewerProps) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const resume = "/harshal_malani.pdf";
 
@@ -20,8 +23,9 @@ export const NewPdfViewer = ({ modalIsOpen, onRequestClose }: NewPdfViewerProps)
       isOpen={modalIsOpen}
       onRequestClose={onRequestClose}
       bodyOpenClassName="overflow-hidden"
-      className={`fixed z-50 p-2 sm:p-4 transition-all duration-300 ${isFullScreen ? "inset-0" : "inset-0 flex items-center justify-center"
-        }`}
+      className={`fixed z-50 p-2 sm:p-4 transition-all duration-300 ${
+        isFullScreen ? "inset-0" : "inset-0 flex items-center justify-center"
+      }`}
       overlayClassName="fixed inset-0 bg-[#161819] dark:bg-black backdrop-blur-md z-40 transition-opacity duration-300"
     >
       <motion.div
@@ -29,10 +33,11 @@ export const NewPdfViewer = ({ modalIsOpen, onRequestClose }: NewPdfViewerProps)
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className={`w-full bg-[#f9f5ee] dark:bg-[#161819] border border-[#ebd9c8] dark:border-zinc-800 rounded-2xl shadow-[0_20px_50px_-20px_rgba(235,217,200,0.4)] dark:shadow-none overflow-hidden flex flex-col ${isFullScreen
-          ? "fixed inset-4 h-[calc(100vh-2rem)] max-w-none"
-          : "h-[85vh] sm:h-[80vh] sm:max-w-3xl lg:max-w-4xl mx-auto"
-          }`}
+        className={`w-full bg-[#f9f5ee] dark:bg-[#161819] border border-[#ebd9c8] dark:border-zinc-800 rounded-2xl shadow-[0_20px_50px_-20px_rgba(235,217,200,0.4)] dark:shadow-none overflow-hidden flex flex-col ${
+          isFullScreen
+            ? "fixed inset-4 h-[calc(100vh-2rem)] max-w-none"
+            : "h-[85vh] sm:h-[80vh] sm:max-w-3xl lg:max-w-4xl mx-auto"
+        }`}
       >
         {/* Modal Header */}
         <div className="flex justify-between items-center px-5 py-3.5 border-b border-[#ebd9c8] dark:border-zinc-800 bg-[#f9f5ee] dark:bg-[#161819] backdrop-blur-sm z-10 shrink-0">
@@ -44,7 +49,9 @@ export const NewPdfViewer = ({ modalIsOpen, onRequestClose }: NewPdfViewerProps)
               <X size={14} />
               <span>Close</span>
             </button>
-            <span className={`${space_mono.className} hidden sm:inline-block text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest`}>
+            <span
+              className={`${space_mono.className} hidden sm:inline-block text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest`}
+            >
               harshal_resume.pdf
             </span>
           </div>

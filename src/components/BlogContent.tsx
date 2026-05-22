@@ -3,7 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { fira_code, jetbrains_mono ,space_grotesk } from "@/lib/fonts";
+import { fira_code, jetbrains_mono, space_grotesk } from "@/lib/fonts";
 import { twMerge } from "tailwind-merge";
 
 interface BlogContentProps {
@@ -25,7 +25,7 @@ export default function BlogContent({ content }: BlogContentProps) {
         "prose-blockquote:bg-emerald-50 dark:prose-blockquote:bg-yellow-900/30 prose-blockquote:py-2 prose-blockquote:px-4",
         "prose-ul:list-none prose-ol:list-none",
         "prose-li:border-2 prose-li:border-black dark:prose-li:border-white prose-li:bg-white dark:prose-li:bg-zinc-800",
-        "prose-li:py-2 prose-li:px-4 prose-li:mb-2 prose-li:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:prose-li:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]"
+        "prose-li:py-2 prose-li:px-4 prose-li:mb-2 prose-li:shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:prose-li:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]",
       )}
     >
       <ReactMarkdown
@@ -37,7 +37,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             <h1
               className={twMerge(
                 `${space_grotesk.className} text-4xl md:text-5xl mb-4 mt-8`,
-                "border-b-4 border-black dark:border-white pb-2"
+                "border-b-4 border-black dark:border-white pb-2",
               )}
               {...props}
             />
@@ -46,7 +46,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             <h2
               className={twMerge(
                 `${jetbrains_mono.className} text-3xl md:text-4xl mb-3 mt-6`,
-                "border-b-3 border-black dark:border-white pb-2"
+                "border-b-3 border-black dark:border-white pb-2",
               )}
               {...props}
             />
@@ -54,7 +54,7 @@ export default function BlogContent({ content }: BlogContentProps) {
           h3: ({ node, ...props }) => (
             <h3
               className={twMerge(
-                `${jetbrains_mono.className} text-2xl md:text-3xl mb-2 mt-4`
+                `${jetbrains_mono.className} text-2xl md:text-3xl mb-2 mt-4`,
               )}
               {...props}
             />
@@ -66,7 +66,7 @@ export default function BlogContent({ content }: BlogContentProps) {
               <pre
                 className={twMerge(
                   `${fira_code.className} p-4 rounded-none overflow-x-auto mb-4`,
-                  "border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]"
+                  "border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]",
                 )}
               >
                 <code className={className} {...props}>
@@ -77,7 +77,7 @@ export default function BlogContent({ content }: BlogContentProps) {
               <code
                 className={twMerge(
                   `${fira_code.className} px-2 py-1 bg-emerald-100 dark:bg-yellow-900/50`,
-                  "border-2 border-black dark:border-white font-bold rounded-none"
+                  "border-2 border-black dark:border-white font-bold rounded-none",
                 )}
                 {...props}
               >
@@ -109,7 +109,7 @@ export default function BlogContent({ content }: BlogContentProps) {
                 "border-l-4 border-black dark:border-white",
                 "bg-emerald-50 dark:bg-yellow-900/30 py-3 px-5 my-4",
                 "border-2 border-t-2 border-r-2 border-black dark:border-white",
-                "shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]"
+                "shadow-[4px_4px_0px_0px_rgba(0,0,0)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.5)]",
               )}
               {...props}
             />
@@ -121,7 +121,7 @@ export default function BlogContent({ content }: BlogContentProps) {
                 "border-2 border-black dark:border-white",
                 "bg-white dark:bg-zinc-800 py-2 px-4 mb-2",
                 "shadow-[3px_3px_0px_0px_rgba(0,0,0)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]",
-                "list-none"
+                "list-none",
               )}
               {...props}
             />
@@ -135,7 +135,7 @@ export default function BlogContent({ content }: BlogContentProps) {
               className={twMerge(
                 "text-emerald-600 dark:text-yellow-400 font-bold",
                 "border-b-2 border-emerald-600 dark:border-yellow-400",
-                "hover:bg-emerald-100 dark:hover:bg-yellow-900/30 px-1"
+                "hover:bg-emerald-100 dark:hover:bg-yellow-900/30 px-1",
               )}
               {...props}
             />
@@ -145,7 +145,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             <p
               className={twMerge(
                 "mb-4 text-gray-800 dark:text-gray-200 leading-relaxed",
-                "text-base md:text-lg"
+                "text-base md:text-lg",
               )}
               {...props}
             />
@@ -157,4 +157,3 @@ export default function BlogContent({ content }: BlogContentProps) {
     </div>
   );
 }
-

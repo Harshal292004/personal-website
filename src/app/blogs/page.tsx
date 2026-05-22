@@ -14,7 +14,9 @@ export default function BlogsPage() {
   const [selectedSeries, setSelectedSeries] = useState("");
 
   const allTags = Array.from(new Set(blogs.flatMap((blog) => blog.tags)));
-  const allSeries = Array.from(new Set(blogs.map((blog) => blog.series).filter(Boolean)));
+  const allSeries = Array.from(
+    new Set(blogs.map((blog) => blog.series).filter(Boolean)),
+  );
 
   const filteredBlogs = blogs.filter((blog) => {
     const matchesSearch =
@@ -31,7 +33,7 @@ export default function BlogsPage() {
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     );
   };
 
@@ -47,7 +49,9 @@ export default function BlogsPage() {
       <main className="max-w-3xl mx-auto px-6 pt-16">
         {/* Page Title */}
         <div className="mb-12">
-          <h1 className={`${lora.className} text-4xl font-normal text-zinc-900 dark:text-zinc-50 mb-3`}>
+          <h1
+            className={`${lora.className} text-4xl font-normal text-zinc-900 dark:text-zinc-50 mb-3`}
+          >
             Blogs
           </h1>
           <p className={`${lora.className} text-zinc-500 italic`}>
@@ -57,10 +61,12 @@ export default function BlogsPage() {
 
         {/* Understated Filters and Search */}
         <div className="mb-12 p-6 rounded-2xl border border-[#ebd9c8] dark:border-zinc-800 bg-[#f9f5ee]/40 dark:bg-zinc-900/20 space-y-6">
-
           {/* Search Box */}
           <div className="relative">
-            <Search size={14} className="absolute left-3 top-3.5 text-zinc-400" />
+            <Search
+              size={14}
+              className="absolute left-3 top-3.5 text-zinc-400"
+            />
             <input
               type="text"
               placeholder="Search logs..."
@@ -81,7 +87,9 @@ export default function BlogsPage() {
 
           {/* Tags Filter */}
           <div className="space-y-2">
-            <span className={`${space_mono.className} text-[9px] uppercase tracking-wider text-zinc-400 mb-2 inline-block`}>
+            <span
+              className={`${space_mono.className} text-[9px] uppercase tracking-wider text-zinc-400 mb-2 inline-block`}
+            >
               Filter by Tag
             </span>
             <div className="flex flex-wrap gap-2">
@@ -91,10 +99,11 @@ export default function BlogsPage() {
                   <button
                     key={tag}
                     onClick={() => toggleTag(tag)}
-                    className={`${space_mono.className} text-[10px] px-2.5 py-1 rounded-md border ${isSelected
-                      ? "bg-[#d97706] text-white border-[#d97706]"
-                      : "bg-[#f9f5ee] dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-[#ebd9c8] dark:border-zinc-800 hover:border-zinc-400"
-                      } transition-all cursor-pointer`}
+                    className={`${space_mono.className} text-[10px] px-2.5 py-1 rounded-md border ${
+                      isSelected
+                        ? "bg-[#d97706] text-white border-[#d97706]"
+                        : "bg-[#f9f5ee] dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-[#ebd9c8] dark:border-zinc-800 hover:border-zinc-400"
+                    } transition-all cursor-pointer`}
                   >
                     {tag}
                   </button>
@@ -106,7 +115,9 @@ export default function BlogsPage() {
           {/* Series Filter */}
           {allSeries.length > 0 && (
             <div className="flex items-center gap-3">
-              <span className={`${space_mono.className} text-[9px] uppercase tracking-wider text-zinc-400`}>
+              <span
+                className={`${space_mono.className} text-[9px] uppercase tracking-wider text-zinc-400`}
+              >
                 Series:
               </span>
               <select
@@ -160,12 +171,16 @@ export default function BlogsPage() {
                 </div>
 
                 <Link href={`/blogs/${blog.id}`} className="block group">
-                  <h2 className={`${lora.className} text-2xl font-normal text-zinc-900 dark:text-zinc-50 group-hover:text-[#d97706] transition-colors duration-300 mb-3`}>
+                  <h2
+                    className={`${lora.className} text-2xl font-normal text-zinc-900 dark:text-zinc-50 group-hover:text-[#d97706] transition-colors duration-300 mb-3`}
+                  >
                     {blog.title}
                   </h2>
                 </Link>
 
-                <p className={`${lora.className} text-zinc-600 dark:text-zinc-400 font-light leading-relaxed mb-4`}>
+                <p
+                  className={`${lora.className} text-zinc-600 dark:text-zinc-400 font-light leading-relaxed mb-4`}
+                >
                   {blog.summary}
                 </p>
 
@@ -188,7 +203,10 @@ export default function BlogsPage() {
                     className="flex items-center gap-1 text-xs font-semibold text-[#d97706] hover:text-[#b45309] transition-colors"
                   >
                     <span>Read post</span>
-                    <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                    <ChevronRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
                   </Link>
                 </div>
               </motion.article>

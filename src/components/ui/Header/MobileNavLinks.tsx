@@ -26,47 +26,58 @@ const MobileNavLinks = ({
       {LINKS.map((link, index) => (
         <React.Fragment key={link.href}>
           {link.label === "Resume" ? (
-              <motion.a
-                className={twMerge(
-                  "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",
-                  "transform transition-all duration-200 border-b-2 border-black",
-                  theme === "dark" &&
-                    "dark:text-yellow-400 dark:hover:bg-gray-700 dark:hover:text-white",
-                )}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    delay: index * 0.1,
-                    duration: 0.3,
-                  },
-                }}
-                whileHover={{ scale: 1.02, x: 5 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setModalIsOpen(true);
-                }}
-              >
-                <span className="flex items-center justify-between">
-                  {link.label}
-                </span>
+            <motion.a
+              className={twMerge(
+                "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",
+                "transform transition-all duration-200 border-b-2 border-black",
+                theme === "dark" &&
+                  "dark:text-yellow-400 dark:hover:bg-gray-700 dark:hover:text-white",
+              )}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  delay: index * 0.1,
+                  duration: 0.3,
+                },
+              }}
+              whileHover={{ scale: 1.02, x: 5 }}
+              onClick={(e) => {
+                e.preventDefault();
+                setModalIsOpen(true);
+              }}
+            >
+              <span className="flex items-center justify-between">
+                {link.label}
+              </span>
 
-                <motion.span
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-gray-300"
-                  initial={{ width: "0%" }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.2 }}
-                />
-              </motion.a>
-              
+              <motion.span
+                className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-gray-300"
+                initial={{ width: "0%" }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.2 }}
+              />
+            </motion.a>
           ) : (
             <motion.a
               key={link.href}
-              href={link.href.startsWith("#") ? link.href : (link.href ? `/old${link.href}` : "")}
-              target={!link.href.startsWith("#") && !link.href.startsWith("/") ? "_blank" : "_self"}
+              href={
+                link.href.startsWith("#")
+                  ? link.href
+                  : link.href
+                    ? `/old${link.href}`
+                    : ""
+              }
+              target={
+                !link.href.startsWith("#") && !link.href.startsWith("/")
+                  ? "_blank"
+                  : "_self"
+              }
               rel={
-                !link.href.startsWith("#") && !link.href.startsWith("/") ? "noopener noreferrer" : undefined
+                !link.href.startsWith("#") && !link.href.startsWith("/")
+                  ? "noopener noreferrer"
+                  : undefined
               }
               className={twMerge(
                 "px-3 py-2 font-bold text-black hover:bg-black hover:text-white",

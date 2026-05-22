@@ -24,7 +24,7 @@ export async function sendContactMessage(formData: {
     if (!smtpPass) {
       return {
         success: false,
-        error: "Messages are currently unavailable. Please try again later."
+        error: "Messages are currently unavailable. Please try again later.",
       };
     }
 
@@ -40,7 +40,9 @@ export async function sendContactMessage(formData: {
       from: `"${formData.name} via Portfolio" <${smtpUser}>`,
       to: "malaniharshal95@gmail.com",
       replyTo: formData.email,
-      subject: formData.subject ? `Portfolio: ${formData.subject}` : `New Message from ${formData.name}`,
+      subject: formData.subject
+        ? `Portfolio: ${formData.subject}`
+        : `New Message from ${formData.name}`,
       text: `New contact message from your portfolio website:
       
 Name: ${formData.name}
@@ -205,10 +207,12 @@ ${formData.message}`,
 
     await transporter.sendMail(mailOptions);
 
-    return { success: true, message: "Message sent to Harshal! Hopping to connect with you soon !" };
+    return {
+      success: true,
+      message: "Message sent to Harshal! Hopping to connect with you soon !",
+    };
   } catch (error: any) {
     console.error("Error sending contact message email:", error);
     return { success: false, error: "Message not sent, try again later " };
   }
 }
-

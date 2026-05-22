@@ -54,7 +54,7 @@ const Hero = ({ id }: { id: string }) => {
             transition: { duration: 0.2 },
           }}
           whileTap={{
-            scale: 0.95
+            scale: 0.95,
           }}
         >
           New minimal site
@@ -108,8 +108,9 @@ const Hero = ({ id }: { id: string }) => {
           >
             {text.text}
             <span
-              className={`ml-1 h-14 w-2 ${text.cursorStyle} ${showCursor ? "opacity-100" : "opacity-0"
-                } transition-opacity dark:bg-yellow-300`}
+              className={`ml-1 h-14 w-2 ${text.cursorStyle} ${
+                showCursor ? "opacity-100" : "opacity-0"
+              } transition-opacity dark:bg-yellow-300`}
             ></span>
           </div>
 
